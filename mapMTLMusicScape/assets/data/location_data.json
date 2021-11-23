@@ -1,0 +1,221 @@
+{
+  "description": "Mapping the Montreal MusicScape",
+  "location_audioGems": [
+    {
+      "soundscape": [
+        "plateauMontRoyalOutremont_soundscape1",
+        "plateauMontRoyalOutremont_soundscape2",
+        "plateauMontRoyalOutremont_soundscape3",
+        "plateauMontRoyalOutremont_soundscape4"
+      ],
+      "interview": [
+        "plateauMontRoyalOutremont_interview1",
+        "plateauMontRoyalOutremont_interview2",
+        "plateauMontRoyalOutremont_interview3",
+        "plateauMontRoyalOutremont_interview4"
+      ],
+
+      "story": [
+        "plateauMontRoyalOutremont_story1",
+        "plateauMontRoyalOutremont_story2",
+        "plateauMontRoyalOutremont_story3",
+        "plateauMontRoyalOutremont_story4"
+      ],
+      "playlist": [
+        "plateauMontRoyalOutremont_playlist1",
+        "plateauMontRoyalOutremont_playlist2",
+        "plateauMontRoyalOutremont_playlist3",
+        "plateauMontRoyalOutremont_playlist4"
+      ],
+      "user created": [
+        "plateauMontRoyalOutremont_userCreated1",
+        "plateauMontRoyalOutremont_userCreated2",
+        "plateauMontRoyalOutremont_userCreated3",
+        "plateauMontRoyalOutremont_userCreated4"
+      ],
+      "location": "North_2M_Lat",
+      "date_added": "02 02 2021",
+      "neighbourhood": "Plateau Mont Royal Outremont"
+    },
+    {
+      "soundscape": [
+        "villerayRosemont_soundscape1",
+        "villerayRosemont_soundscape2",
+        "villerayRosemont_soundscape3",
+        "villerayRosemont_soundscape4"
+      ],
+      "interview": [
+        "villerayRosemont_interview1",
+        "villerayRosemont_interview2",
+        "villerayRosemont_interview3",
+        "villerayRosemont_interview4"
+      ],
+
+      "story": [
+        "villerayRosemont_story1",
+        "villerayRosemont_story2",
+        "villerayRosemont_story3",
+        "villerayRosemont_story4"
+      ],
+      "playlist": [
+        "villerayRosemont_playlist1",
+        "villerayRosemont_playlist2",
+        "villerayRosemont_playlist3",
+        "villerayRosemont_playlist4"
+      ],
+      "user created": [
+        "villerayRosemont_userCreated1",
+        "villerayRosemont_userCreated2",
+        "villerayRosemont_userCreated3",
+        "villerayRosemont_userCreated4"
+      ],
+      "location": "South_2M_Lat",
+      "date_added": "02 02 2021",
+      "neighbourhood": "Villeray and Rosemont"
+    },
+    {
+      "soundscape": [
+        "sudOuest_soundscape1",
+        "sudOuest_soundscape2",
+        "sudOuest_soundscape3",
+        "sudOuest_soundscape4"
+      ],
+      "interview": [
+        "sudOuest_interview1",
+        "sudOuest_interview2",
+        "sudOuest_interview3",
+        "sudOuest_interview4"
+      ],
+
+      "story": [
+        "sudOuest_story1",
+        "sudOuest_story2",
+        "sudOuest_story3",
+        "sudOuest_story4"
+      ],
+      "playlist": [
+        "sudOuest_playlist1",
+        "sudOuest_playlist2",
+        "sudOuest_playlist3",
+        "sudOuest_playlist4"
+      ],
+      "user created": [
+        "sudOuest_userCreated1",
+        "sudOuest_userCreated2",
+        "sudOuest_userCreated3",
+        "sudOuest_userCreated4"
+      ],
+      "location": "East_2M_Long",
+      "date_added": "02 02 2021",
+      "neighbourhood": "Sud Ouest"
+    },
+    {
+      "soundscape": [
+        "villeMarie_soundscape1",
+        "villeMarie_soundscape2",
+        "villeMarie_soundscape3",
+        "villeMarie_soundscape4"
+      ],
+      "interview": [
+        "villeMarie_interview1",
+        "villeMarie_interview2",
+        "villeMarie_interview3",
+        "villeMarie_interview4"
+      ],
+
+      "story": [
+        "villeMarie_story1",
+        "villeMarie_story2",
+        "villeMarie_story3",
+        "villeMarie_story4"
+      ],
+      "playlist": [
+        "villeMarie_playlist1",
+        "villeMarie_playlist2",
+        "villeMarie_playlist3",
+        "villeMarie_playlist4"
+      ],
+      "user created": [
+        "villeMarie_userCreated1",
+        "villeMarie_userCreated2",
+        "villeMarie_userCreated3",
+        "villeMarie_userCreated4"
+      ],
+      "location": "West_2M_Long",
+      "date_added": "02 02 2021",
+      "neighbourhood": "Ville Marie"
+    },
+    {
+      "soundscape": [
+        "NDG_CDN_soundscape1",
+        "NDG_CDN_soundscape2",
+        "NDG_CDN_soundscape3",
+        "NDG_CDN_soundscape4"
+      ],
+      "interview": [
+        "NDG_CDN_interview1",
+        "NDG_CDN_interview2",
+        "NDG_CDN_interview3",
+        "NDG_CDN_interview4"
+      ],
+
+      "story": [
+        "NDG_CDN_story1",
+        "NDG_CDN_story2",
+        "NDG_CDN_story3",
+        "NDG_CDN_story4"
+      ],
+      "playlist": [
+        "NDG_CDN_playlist1",
+        "NDG_CDN_playlist2",
+        "NDG_CDN_playlist3",
+        "NDG_CDN_playlist4"
+      ],
+      "user created": [
+        "NDG_CDN_userCreated1",
+        "NDG_CDN_userCreated2",
+        "NDG_CDN_userCreated3",
+        "NDG_CDN_userCreated4"
+      ],
+      "location": "5M_Lat_2M_Long",
+      "date_added": "02 02 2021",
+      "neighbourhood": "NDG CDN"
+    },
+    {
+      "soundscape": [
+        "hochelagaMaisonneuve_soundscape1",
+        "hochelagaMaisonneuve_soundscape2",
+        "hochelagaMaisonneuve_soundscape3",
+        "hochelagaMaisonneuve_soundscape4"
+      ],
+      "interview": [
+        "hochelagaMaisonneuve_interview1",
+        "hochelagaMaisonneuve_interview2",
+        "hochelagaMaisonneuve_interview3",
+        "hochelagaMaisonneuve_interview4"
+      ],
+
+      "story": [
+        "hochelagaMaisonneuve_story1",
+        "hochelagaMaisonneuve_story2",
+        "hochelagaMaisonneuve_story3",
+        "hochelagaMaisonneuve_story4"
+      ],
+      "playlist": [
+        "hochelagaMaisonneuve_playlist1",
+        "hochelagaMaisonneuve_playlist2",
+        "hochelagaMaisonneuve_playlist3",
+        "hochelagaMaisonneuve_playlist4"
+      ],
+      "user created": [
+        "hochelagaMaisonneuve_userCreated1",
+        "hochelagaMaisonneuve_userCreated2",
+        "hochelagaMaisonneuve_userCreated3",
+        "hochelagaMaisonneuve_userCreated4"
+      ],
+      "location": "-2M_Long_2M_Lat",
+      "date_added": "02 02 2021",
+      "neighbourhood": "Hochelaga Maisonneuve"
+    }
+  ]
+}
