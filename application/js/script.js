@@ -58,6 +58,12 @@ let buttonYPosition = 120;
 let buttonXSize = 105;
 let buttonYSize = 50;
 
+///sign in page
+let signInNameInput;
+let signInButton;
+let registerButton;
+let signInBoxColor = "white";
+
 //variables to store the gif with the storyline for the start of each scene
 let signInPage = undefined;
 let enterOneInfo = undefined;
@@ -208,6 +214,12 @@ function preload() {
 }
 
 function setup() {
+  textFont("Georgia");
+  signInNameInput = createInput();
+  registerButton = createButton("Register");
+  signInButton = createButton("Let's go!");
+  signInNameInput.position(width / 2 + 40, height / 2 + 400);
+
   // Create the canvas
   createCanvas(375, 667); //size of iphone 6/7/8 -meant to be a moile app.
 
@@ -867,7 +879,7 @@ function enterIntro() {
 
   push();
   imageMode(CENTER);
-  image(signInPage, width / 2 + 7, height / 2 + 5);
+  image(signInPage, width / 2 + 7, height / 2 - 100);
   pop();
 }
 
