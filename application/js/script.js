@@ -59,7 +59,7 @@ let buttonXSize = 105;
 let buttonYSize = 50;
 
 //variables to store the gif with the storyline for the start of each scene
-let enterIntroInfo = undefined;
+let signInPage = undefined;
 let enterOneInfo = undefined;
 let enterTwoInfo = undefined;
 let enterThreeInfo = undefined;
@@ -181,7 +181,7 @@ function preload() {
 
   ///typing gifs with each scene's storyline typing out : from http://wigflip.com/minifesto/
 
-  enterIntroInfo = loadImage(`assets/images/enterIntroInfo.gif`); //load the optical illusion labyrinth trick map
+  signInPage = loadImage(`assets/images/homePage1.png`); //load the optical illusion labyrinth trick map
   enterOneInfo = loadImage(`assets/images/enterOneInfo.gif`); //load the storyline gif for scene one - 'oh no! you've come to your baby brother's room...''
   enterTwoInfo = loadImage(`assets/images/enterTwoInfo.gif`); //load the storyline gif for scene two - 'Jareth, the goblin King tells you...'
   enterThreeInfo = loadImage(`assets/images/sceneThreeInfo.gif`); //load the storyline gif for scene three - 'you find a set of doors guarded by a set of dog-like creatures... '
@@ -290,7 +290,7 @@ function generateLabyrinthProfile() {
 }
 
 function draw() {
-  background(0);
+  background(220, 219, 217);
 
   //different states for the different scenes/levels and win or lose screens
   //enter_scene_# - are the states/scenes that tell you the story about that scene/ part of the story
@@ -844,20 +844,20 @@ function returnMapButton() {
 //boxes and box dropshadows for each story entrance scene
 function introStoryBoxes() {
   push();
-  fill(200, 100, 0, 75);
-  tint(75);
-  stroke(0, 61, 61);
+  // fill(200, 100, 0, 75);
+  // tint(75);
+  // stroke(0, 61, 61);
 
-  image(labyrinthBanner, 0, 0);
-  strokeWeight(3);
-  rectMode(CENTER);
-  rect(width / 2 - 7, height / 2 + 55, 330, 480);
-  strokeWeight(3);
-  stroke(250, 233, 0);
+  // image(labyrinthBanner, 0, 0);
+  // strokeWeight(3);
+  // rectMode(CENTER);
+  // rect(width / 2 - 7, height / 2 + 55, 330, 480);
+  // strokeWeight(3);
+  // stroke(250, 233, 0);
 
-  fill(0);
+  // fill(255, 255, 255);
 
-  rect(width / 2 + 7, height / 2 + 35, 330, 480);
+  // rect(width / 2 + 7, height / 2 + 35, 330, 480);
   pop();
 }
 
@@ -867,7 +867,7 @@ function enterIntro() {
 
   push();
   imageMode(CENTER);
-  image(enterIntroInfo, width / 2 + 7, height / 2 + 35);
+  image(signInPage, width / 2 + 7, height / 2 + 35);
   pop();
 }
 
