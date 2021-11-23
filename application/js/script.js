@@ -867,7 +867,7 @@ function enterIntro() {
 
   push();
   imageMode(CENTER);
-  image(signInPage, width / 2 + 7, height / 2 + 35);
+  image(signInPage, width / 2 + 7, height / 2 + 5);
   pop();
 }
 
