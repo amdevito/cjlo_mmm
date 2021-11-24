@@ -1,8 +1,14 @@
 "use strict";
 
 /*****************
-Project One: Labyrinth GO (the game)
-By: Alana DeVito
+mapping montreal application
+ need to-
+ create better designed button
+ takee out the extra pages
+ store soundcloud links in the json file
+use google maps api to show gems on a map
+
+ });
 
 You are the main character from the 1984 movie, Labyrinth.
 
@@ -62,6 +68,7 @@ let buttonYSize = 50;
 let signInNameInput;
 let signInButton;
 let registerButton;
+let passwordInput;
 let signInBoxColor = "white";
 
 //variables to store the gif with the storyline for the start of each scene
@@ -215,10 +222,21 @@ function preload() {
 
 function setup() {
   textFont("Georgia");
+
+  // mkae this a function
+  //create button, username and password inputs and position
   signInNameInput = createInput();
+  signInNameInput.size(238, 30);
+  passwordInput = createInput();
+  passwordInput.size(238, 30);
   registerButton = createButton("Register");
   signInButton = createButton("Let's go!");
-  signInNameInput.position(width / 2 + 40, height / 2 + 400);
+  signInNameInput.position(width / 2 + 15, height / 2 + 320);
+  passwordInput.position(width / 2 + 15, height / 2 + 370);
+  registerButton.position(width / 2 + 15, height / 2 + 420);
+  signInButton.position(width / 2 + 195, height / 2 + 420);
+
+  ////!!!START HERE first make password input box and then position buttons in a better location. then place them into their own functions and use the button and input remover to make them disappear when you go into the application
 
   // Create the canvas
   createCanvas(375, 667); //size of iphone 6/7/8 -meant to be a moile app.
@@ -879,7 +897,7 @@ function enterIntro() {
 
   push();
   imageMode(CENTER);
-  image(signInPage, width / 2 + 7, height / 2 - 100);
+  image(signInPage, width / 2 + 7, 200);
   pop();
 }
 
