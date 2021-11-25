@@ -30,6 +30,9 @@ You find out your baby brother, Toby has disappeared and need to search the laby
 - your geolocation is visible, telling you where you are in the labyrinth (actually in real-life) - I decided that having someone walk around their space may be impractical right now, but I still wanted to try and utilize a geolocation library so I have kept that in the application for visual UI purposes mainly.
 
 ******************/
+
+//set variables for LOGOS
+let cjloLogo;
 //set beginning state for the game
 let state = "enter";
 
@@ -189,6 +192,9 @@ let figthJarethButton = undefined; //when user is in position to win (has the ri
 function preload() {
   //set up variables with their respective physical elements
 
+  ///LOGOS
+  cjloLogo = loadImage(`assets/images/cjloLogoSml.png`); //load CJLO logo
+
   labyrinthBanner = loadImage(`assets/images/labyrinthBanner.png`); //load the banner image into the labyrinthBanner variable - 8bit Labyrinth game logo
   labyrinthTrickMap = loadImage(`assets/images/labyrinthBackground.jpg`); //load the optical illusion labyrinth trick map
 
@@ -221,25 +227,11 @@ function preload() {
 }
 
 function setup() {
-  textFont("Georgia");
-
-  // mkae this a function
-  //create button, username and password inputs and position
-  signInNameInput = createInput();
-  signInNameInput.size(238, 30);
-  passwordInput = createInput();
-  passwordInput.size(238, 30);
-  registerButton = createButton("Register");
-  signInButton = createButton("Let's go!");
-  signInNameInput.position(width / 2 + 15, height / 2 + 320);
-  passwordInput.position(width / 2 + 15, height / 2 + 370);
-  registerButton.position(width / 2 + 15, height / 2 + 420);
-  signInButton.position(width / 2 + 195, height / 2 + 420);
-
-  ////!!!START HERE first make password input box and then position buttons in a better location. then place them into their own functions and use the button and input remover to make them disappear when you go into the application
-
   // Create the canvas
+
+  // pop();
   createCanvas(375, 667); //size of iphone 6/7/8 -meant to be a moile app.
+  ////!!!START HERE first make password input box and then position buttons in a better location. then place them into their own functions and use the button and input remover to make them disappear when you go into the application
 
   //check if geolocation is available
   if (geoCheck() == true) {
@@ -741,6 +733,7 @@ function sendMapButton() {
 }
 
 //take away the buttons and menus from canvas
+////MAKE THIS FOR THE ENTER SCREEN
 function buttonRemover() {
   userInputLocation.remove();
   userInputSelection.remove();
@@ -893,15 +886,44 @@ function introStoryBoxes() {
 
 //the first opening welcome scene when you launch the application
 function enterIntro() {
-  introStoryBoxes();
+  // introStoryBoxes();
 
   push();
   imageMode(CENTER);
   image(signInPage, width / 2 + 7, 200);
+
+  //create button, username and password inputs and position
+  // push();
+  signInNameInput = createInput();
+  signInNameInput.size(238, 30);
+  passwordInput = createInput();
+  passwordInput.size(238, 30);
+  registerButton = createButton("Register");
+  signInButton = createButton("Let's go!");
+  signInNameInput.position(width / 6, height / 2 + height / 20);
+  passwordInput.position(width / 6, height / 2 + height / 8);
+  registerButton.position(width / 6, height / 2 + height / 5);
+  signInButton.position(width / 2 + width / 6.8, height / 2 + height / 5);
+  // pop();
+
+  push();
+  // image(labyrinthBanner, 0, 0);
+  textFont(`Verdana`);
+  textSize(width / 43);
+  textAlign(CENTER, CENTER);
+  fill(0);
+  text(
+    `PRODUCED WITH ASSISTANCE FROM THE COMMUNITY RADIO FUND OF CANADA`,
+    width / 2,
+    height - height / 28
+  );
+  imageMode(CENTER);
+  image(cjloLogo, width / 2 + width / 3.5, height / 2 + height / 3);
   pop();
 }
 
-///entrance scene with image from movie and a storyline talking about the situation surround the current enviroment that the user will be searching in.
+///entrance scene with image from movie and a storyline talking about the
+//situation surround the current enviroment that the user will be searching in.
 function enterOne() {
   introStoryBoxes();
 
