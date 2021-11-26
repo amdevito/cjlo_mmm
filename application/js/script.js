@@ -926,9 +926,9 @@ function enterIntro() {
   imageMode(CENTER);
   image(cjloLogo, width / 2 + width / 18, height - height / 11);
   // width / 2 + width / 33, height - height / 11
-  image(canRadioLogo, width / 2 + width / 3, height / 2 + height / 2.35);
-  image(allabLogo, width / 5 + width / 38, height - height / 15);
-  image(cohdsLogo, width / 5, height - height / 10);
+  image(canRadioLogo, width / 2 + width / 3, height - height / 11);
+  image(allabLogo, width / 4, height - height / 15);
+  image(cohdsLogo, width / 5, height - height / 9);
 
   pop();
 }
