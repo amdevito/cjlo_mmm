@@ -924,7 +924,7 @@ function enterIntro() {
     height - height / 35
   );
   imageMode(CENTER);
-  image(cjloLogo, width / 2 + width / 18, height - height / 11);
+  image(cjloLogo, width / 2 + width / 16, height - height / 11);
   // width / 2 + width / 33, height - height / 11
   image(canRadioLogo, width / 2 + width / 3, height - height / 11);
   image(allabLogo, width / 4, height - height / 15);
