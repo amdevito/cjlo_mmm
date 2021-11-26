@@ -33,6 +33,9 @@ You find out your baby brother, Toby has disappeared and need to search the laby
 
 //set variables for LOGOS
 let cjloLogo;
+let canRadioLogo;
+let allabLogo;
+let cohdsLogo;
 //set beginning state for the game
 let state = "enter";
 
@@ -194,6 +197,9 @@ function preload() {
 
   ///LOGOS
   cjloLogo = loadImage(`assets/images/cjloLogoSml.png`); //load CJLO logo
+  canRadioLogo = loadImage(`assets/images/canRadioLogo.png`); //load Can Radio logo
+  allabLogo = loadImage(`assets/images/allabLogo.png`); //load allab logo
+  cohdsLogo = loadImage(`assets/images/cohdsLogo.png`); //load allab logo
 
   labyrinthBanner = loadImage(`assets/images/labyrinthBanner.png`); //load the banner image into the labyrinthBanner variable - 8bit Labyrinth game logo
   labyrinthTrickMap = loadImage(`assets/images/labyrinthBackground.jpg`); //load the optical illusion labyrinth trick map
@@ -909,16 +915,21 @@ function enterIntro() {
   push();
   // image(labyrinthBanner, 0, 0);
   textFont(`Verdana`);
-  textSize(width / 43);
+  textSize(width / 45);
   textAlign(CENTER, CENTER);
   fill(0);
   text(
     `PRODUCED WITH ASSISTANCE FROM THE COMMUNITY RADIO FUND OF CANADA`,
     width / 2,
-    height - height / 28
+    height - height / 35
   );
   imageMode(CENTER);
-  image(cjloLogo, width / 2 + width / 3.5, height / 2 + height / 3);
+  image(cjloLogo, width / 2 + width / 18, height - height / 11);
+  // width / 2 + width / 33, height - height / 11
+  image(canRadioLogo, width / 2 + width / 3, height / 2 + height / 2.35);
+  image(allabLogo, width / 5 + width / 38, height - height / 15);
+  image(cohdsLogo, width / 5, height - height / 10);
+
   pop();
 }
 
