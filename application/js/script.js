@@ -923,12 +923,13 @@ function enterIntro() {
     width / 2,
     height - height / 35
   );
+  //position logos
   imageMode(CENTER);
-  image(cjloLogo, width / 2 + width / 16, height - height / 11);
+  image(cjloLogo, width / 2 + width / 16, height - height / 10);
   // width / 2 + width / 33, height - height / 11
-  image(canRadioLogo, width / 2 + width / 3, height - height / 11);
-  image(allabLogo, width / 4, height - height / 15);
-  image(cohdsLogo, width / 5, height - height / 9);
+  image(canRadioLogo, width / 2 + width / 3, height - height / 10);
+  image(allabLogo, width / 4, height - height / 13);
+  image(cohdsLogo, width / 5, height - height / 8);
 
   pop();
 }
