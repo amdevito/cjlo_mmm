@@ -36,6 +36,11 @@ let cjloLogo;
 let canRadioLogo;
 let allabLogo;
 let cohdsLogo;
+
+let name;
+let password;
+let data;
+
 //set beginning state for the game
 let state = "enter";
 
@@ -236,9 +241,21 @@ function setup() {
   // Create the canvas
 
   // pop();
-  createCanvas(375, 667); //size of iphone 6/7/8 -meant to be a moile app.
+  createCanvas(375, 667); //size of iphone 6/7/8 -meant to be a mobile app.
   ////!!!START HERE first make password input box and then position buttons in a better location. then place them into their own functions and use the button and input remover to make them disappear when you go into the application
-
+  //create button, username and password inputs and position
+  // push();
+  signInNameInput = createInput("name", "text");
+  signInNameInput.size(238, 30);
+  passwordInput = createInput("password", "password");
+  passwordInput.size(238, 30);
+  registerButton = createButton("register");
+  signInButton = createButton("LET'S GO!");
+  signInNameInput.position(width / 6, height / 2 + height / 20);
+  passwordInput.position(width / 6, height / 2 + height / 8);
+  registerButton.position(width / 6, height / 2 + height / 5);
+  signInButton.position(width / 2 + width / 8.5, height / 2 + height / 5);
+  // pop();
   //check if geolocation is available
   if (geoCheck() == true) {
     //geolocation is available -
@@ -248,15 +265,6 @@ function setup() {
 
   //voice recognition for line to beat Jareth in winScene.
   //activate the annyang voice recognition library
-  if (annyang) {
-    let commands = {
-      //assign the user's guess to the command variable and call the guess line function. //listen to all of the user's speech
-      "*userSpeech": guessLine,
-    };
-
-    annyang.addCommands(commands);
-    annyang.start();
-  }
 
   //geolocation function to report a new location if the user changes location from the original position.
   watchPosition(positionChanged);
@@ -272,42 +280,83 @@ function setup() {
 
   ///Game profile saving and setting to the labyrinthProfile variable.
   // Check of there is a saved profile and try to load the data
-
-  ////change let name = prompt ... to input.userName? and same with password
-  let data = JSON.parse(localStorage.getItem(`labyrinth-profile-data`));
-  if (data !== null) {
-    let name = prompt(`What is your user name? Or type "create new"`); //enter user name or ask to create new one
-    if (name === `create new`) {
-      generateLabyrinthProfile(); //create new profile
-    } else {
-      let password = prompt(`What is your password? Or type "create new"`);
-      if (password === data.password && name === data.name) {
-        labyrinthProfile.name = data.name;
-        labyrinthProfile.searchLocation = data.searchLocation;
-        labyrinthProfile.charactersCollected = data.charactersCollected;
-        labyrinthProfile.currentScene = data.currentScene;
-        labyrinthProfile.itemsCollected = data.itemsCollected;
-        labyrinthProfile.selection = data.selection;
-      } else if (
-        (password !== data.password && name !== data.name) ||
-        (name === data.name && password !== data.password) ||
-        (name !== data.name && password === `create new`)
-      ) {
-        //if password and usernames dont match one on file, generate new profile.
-        generateLabyrinthProfile();
-      }
-    }
-  } else {
-    generateLabyrinthProfile();
-  }
 }
 
+//the first opening welcome scene when you launch the application
+function enterIntro() {
+  push();
+  imageMode(CENTER);
+  image(signInPage, width / 2 + 7, 200);
+
+  push();
+  // image(labyrinthBanner, 0, 0);
+  textFont(`Verdana`);
+  textSize(width / 45);
+  textAlign(CENTER, CENTER);
+  fill(0);
+  text(
+    `PRODUCED WITH ASSISTANCE FROM THE COMMUNITY RADIO FUND OF CANADA`,
+    width / 2,
+    height - height / 35
+  );
+  //position logos
+  imageMode(CENTER);
+  image(cjloLogo, width / 2 + width / 16, height - height / 10);
+  // width / 2 + width / 33, height - height / 11
+  image(canRadioLogo, width / 2 + width / 3, height - height / 10);
+  image(allabLogo, width / 4, height - height / 13);
+  image(cohdsLogo, width / 5, height - height / 8);
+
+  pop();
+  // introStoryBoxes();
+  ////change let name = prompt ... to input.userName? and same with password
+  data = JSON.parse(localStorage.getItem(`labyrinth-profile-data`));
+  //CHANGE BELOW TO HAPPEN IF SOMEONE SAYS SIGN IN BUT NO INFO IS FOUND, THEN POP UP WITH A NOTICE TO CREATE A NEW profile
+  //FOR NOW, HAVE THIS HAPPEN WHEN SOME ONE REGISTERS
+
+  name = signInNameInput.value();
+  password = passwordInput.value();
+  ///IF DATA = NULL AND REGISTER BUTTON IS PRESSED, MAKE NAME AND PASSWORD INPUT PROFILE INFO
+  registerButton.mousePressed(generateLabyrinthProfile);
+  signInButton.mousePressed(checkMMMProfile);
+  //
+  // if (data !== null) {
+  //   let name = signInNameInput.value(); //enter user name or ask to create new one
+  //   // let name = prompt(`What is your user name? Or type "create new"`);
+  //   if (name === `create new`) {
+  //     generateLabyrinthProfile(); //create new profile
+  //   } else {
+  //     let password = passwordInput.value();
+  //     if (password === data.password && name === data.name) {
+  //       labyrinthProfile.name = data.name;
+  //       labyrinthProfile.searchLocation = data.searchLocation;
+  //       labyrinthProfile.charactersCollected = data.charactersCollected;
+  //       labyrinthProfile.currentScene = data.currentScene;
+  //       labyrinthProfile.itemsCollected = data.itemsCollected;
+  //       labyrinthProfile.selection = data.selection;
+  //     } else if (
+  //       (password !== data.password && name !== data.name) ||
+  //       (name === data.name && password !== data.password) ||
+  //       (name !== data.name && password === `create new`)
+  //     ) {
+  //       //if password and usernames dont match one on file, generate new profile.
+  //       generateLabyrinthProfile();
+  //     }
+  //   }
+  // } else {
+  //   generateLabyrinthProfile();
+  // }
+}
+
+function checkMMMProfile() {}
+// function
 //Create
 // Assigns across the profile properties from the data to the current profile
+//CALL BELOW IF THE REGISTER BUTTON IS PRESSED
 
 function generateLabyrinthProfile() {
-  labyrinthProfile.name = prompt(`What is your name?`); //prompt answer saved into the variable labyrinthProfile.name
-  labyrinthProfile.password = prompt(`Please create a password.`); //prompt answer saved into the variable labyrinthProfile.password
+  labyrinthProfile.name = signInNameInput.value(); //prompt answer saved into the variable labyrinthProfile.name
+  labyrinthProfile.password = passwordInput.value(); //prompt answer saved into the variable labyrinthProfile.password
 
   localStorage.setItem(
     //store info in localStorage
@@ -893,50 +942,6 @@ function introStoryBoxes() {
   pop();
 }
 
-//the first opening welcome scene when you launch the application
-function enterIntro() {
-  // introStoryBoxes();
-
-  push();
-  imageMode(CENTER);
-  image(signInPage, width / 2 + 7, 200);
-
-  //create button, username and password inputs and position
-  // push();
-  signInNameInput = createInput("name", "text");
-  signInNameInput.size(238, 30);
-  passwordInput = createInput("password", "password");
-  passwordInput.size(238, 30);
-  registerButton = createButton("register");
-  signInButton = createButton("LET'S GO!");
-  signInNameInput.position(width / 6, height / 2 + height / 20);
-  passwordInput.position(width / 6, height / 2 + height / 8);
-  registerButton.position(width / 6, height / 2 + height / 5);
-  signInButton.position(width / 2 + width / 8.5, height / 2 + height / 5);
-  // pop();
-
-  push();
-  // image(labyrinthBanner, 0, 0);
-  textFont(`Verdana`);
-  textSize(width / 45);
-  textAlign(CENTER, CENTER);
-  fill(0);
-  text(
-    `PRODUCED WITH ASSISTANCE FROM THE COMMUNITY RADIO FUND OF CANADA`,
-    width / 2,
-    height - height / 35
-  );
-  //position logos
-  imageMode(CENTER);
-  image(cjloLogo, width / 2 + width / 16, height - height / 10);
-  // width / 2 + width / 33, height - height / 11
-  image(canRadioLogo, width / 2 + width / 3, height - height / 10);
-  image(allabLogo, width / 4, height - height / 13);
-  image(cohdsLogo, width / 5, height - height / 8);
-
-  pop();
-}
-
 ///entrance scene with image from movie and a storyline talking about the
 //situation surround the current enviroment that the user will be searching in.
 function enterOne() {
@@ -1250,10 +1255,10 @@ function positionChanged(position) {
   labyrinthProfile.currentLocationLong = position.longitude;
 }
 
-///mouse Press advances user from the open welcome and intro scene.
-function mousePressed() {
-  if (state === `enter`) {
-    state = `enter_scene_One`;
-    introAdvanceButton();
-  }
-}
+// ///mouse Press advances user from the open welcome and intro scene.
+// function mousePressed() {
+//   if (state === `enter`) {
+//     state = `enter_scene_One`;
+//     introAdvanceButton();
+//   }
+// }
