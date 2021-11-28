@@ -900,16 +900,16 @@ function enterIntro() {
 
   //create button, username and password inputs and position
   // push();
-  signInNameInput = createInput();
+  signInNameInput = createInput("name", "text");
   signInNameInput.size(238, 30);
-  passwordInput = createInput();
+  passwordInput = createInput("password", "password");
   passwordInput.size(238, 30);
-  registerButton = createButton("Register");
-  signInButton = createButton("Let's go!");
+  registerButton = createButton("register");
+  signInButton = createButton("LET'S GO!");
   signInNameInput.position(width / 6, height / 2 + height / 20);
   passwordInput.position(width / 6, height / 2 + height / 8);
   registerButton.position(width / 6, height / 2 + height / 5);
-  signInButton.position(width / 2 + width / 6.8, height / 2 + height / 5);
+  signInButton.position(width / 2 + width / 8.5, height / 2 + height / 5);
   // pop();
 
   push();
