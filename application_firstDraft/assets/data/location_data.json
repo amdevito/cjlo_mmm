@@ -1,0 +1,107 @@
+{
+  "description": "Labyrinth GO",
+  "location_finds": [
+    {
+      "under bed": [
+        "You've found the goblins! \n     Maybe you shouldn't have wished for \n      them to take your \n      baby brother...",
+        "There's nothing there. Try again."
+      ],
+      "behind curtain": [
+        "You've found the Goblin King, Jareth!",
+        "There's nothing there. Try again."
+      ],
+      "in bookshelf": [
+        "There's nothing there. Try again.",
+        "You've found the book, 'The Labyrinth' \n     and take note of a very important \n    passage: 'You have no power over me.' \n    Remember this for later..."
+      ],
+      "in closet": [
+        "There's nothing there. Try again.",
+        "You've been suprised by a snake!"
+      ],
+
+      "scene": "one"
+    },
+    {
+      "under rock": [
+        "Ouch! A gaggle of faeries bit you.",
+        "There is nothing here! Try again."
+      ],
+      "behind tree": [
+        "You found grumpy old Hoggle! \n      But thankfully he says he will help you.",
+        "There is nothing here! Try again."
+      ],
+      "check wall": [
+        "'Hello!' Says the friendly caterpillar! \n      Come in for a cup of tea!'",
+        "There is nothing to be found. Try again."
+      ],
+      "check ground": [
+        "There is no one here. Try again!",
+        "Oh you found a bracelet to trade with \n     Hoggle!"
+      ],
+
+      "scene": "two"
+    },
+
+    {
+      "check left corridor": [
+        "You catch miniature men pop up from \n     the tiles in the ground!",
+        "There is nothing here. Keep looking."
+      ],
+      "check door one": [
+        "Certain death! Game OVER!",
+        "Certain death! Game OVER!"
+      ],
+      "check right corridor": [
+        "There is no one here. Keep looking.",
+        "Nothing here! Keep searching."
+      ],
+      "check door two": [
+        "You fall down a dark hole! Luckily, \n     the helping hands catch you \n     and guide you down to the oubliette \n     where Hoggle helps you \n     escape!",
+        "No items here...there may be a character \n      though...hint hint."
+      ],
+
+      "scene": "three"
+    },
+    {
+      "look around tree": [
+        "You rescue Ludo from a gang of \n      soldiers. This lovable giant doesn't\n     know where the castle is,\n      but will be helpful in \n     your quest.",
+        "There's nothing here, but keep looking."
+      ],
+      "look in bush": [
+        "You're suprised by the Fireys!\n     A gang of orange, singing, jiggly\n     dancing characters that toss their\n      heads around!!!!",
+        "Nada. Keep searching."
+      ],
+      "look in dark tunnel": [
+        "No one is here. Keep looking.",
+        "You fall into a hole and tumble into\n     the BOG OF ETERNAL STENCH!!!\n     GAME OVER!!"
+      ],
+      "climb tree": [
+        "Not a soul in sight. Keep looking.",
+        "You take a bite from a poison\n     peach and fall into a fever dream\n     where you dance at a ball\n     with the Goblin King.\n     Start Over."
+      ],
+
+      "scene": "four"
+    },
+
+    {
+      "climb up stairs": [
+        "You fall in love with Jareth, the\n      the Goblin King. GAME OVER.",
+        "There's nothing here."
+      ],
+      "go down stairs": [
+        "Empty. Keep searching. Hurry!",
+        "You run out of time. Game OVER."
+      ],
+      "go through doorway": [
+        "You catch Jareth. He tries to convince \n      you to leave your brother with him. \n      You need to say a special line.\n     to beat him. Click the button\n       and say it to win.",
+        "You're close! Keep looking."
+      ],
+      "jump off ledge": [
+        "You find Toby! Jareth tries to\n     take him back, but if you say the special\n     phrase from the book, you'll beat him.",
+        "You fall to your death. GAME OVER."
+      ],
+
+      "scene": "five"
+    }
+  ]
+}
