@@ -189,9 +189,9 @@ let userInputLocation = undefined; //user enters where they want to search in th
 let userInputSelection = undefined; //is user looking for an item or character?
 
 // buttons variables
-let seeMapButton = undefined; //click to show the labyrinth (just a trick! an optical illusion! - it should say- 'IN THE LABYRINTH, NOTHING IS WHAT IT SEEMS!')
+// let seeMapButton = undefined; //click to show the labyrinth (just a trick! an optical illusion! - it should say- 'IN THE LABYRINTH, NOTHING IS WHAT IT SEEMS!')
 
-let nextSceneButton = undefined; //button to leave current search scene and move to next intro scene
+// let nextSceneButton = undefined; //button to leave current search scene and move to next intro scene
 let nothingIsAsItSeemsButton = undefined; //leave the trick map scene and return to the search interface/scene
 let advanceToScene = undefined; //leave the scene entrance/storyline element and begin the search
 let loseRestartButton = undefined; //pops up when user loses and needs to restart the game
@@ -363,6 +363,12 @@ function generateLabyrinthProfile() {
     `labyrinth-profile-data`,
     JSON.stringify(labyrinthProfile)
   );
+
+  ///!!!!!****
+  ///BELOW - REGISTER IS PRESSED, SO MAIN PROFILE PAGE APPEARS
+  state = `scene_One`;
+  console.log(state);
+
   //localStorage is the object that knows how to save things
   //setItem is the method that does the saving
   //'labyrinth-profile-data' is the key
@@ -396,7 +402,7 @@ function draw() {
     enterFive();
   } else if (state === `scene_Five`) {
     mainProfilePage();
-    nextSceneButton.remove();
+    // nextSceneButton.remove();
   } else if (state === `win`) {
     win();
   } else if (state === `win end`) {
@@ -793,21 +799,21 @@ function sendMapButton() {
 //take away the buttons and menus from canvas
 ////MAKE THIS FOR THE ENTER SCREEN
 function buttonRemover() {
-  userInputLocation.remove();
-  userInputSelection.remove();
-  nextSceneButton.remove();
-  seeMapButton.remove();
+  // userInputLocation.remove();
+  // userInputSelection.remove();
+  // nextSceneButton.remove();
+  // seeMapButton.remove();
 }
 
 //set and create the buttons used throughout the game
 function buttonMaker() {
-  nextSceneButton = createButton("Done Searching, Go to Next Scene");
-  seeMapButton = createButton("See the Labyrinth");
+  // nextSceneButton = createButton("Done Searching, Go to Next Scene");
+  // seeMapButton = createButton("See the Labyrinth");
 }
 
 ///remove all buttons and menus used for searching and place button that restarts the game.
 function youLoseButton() {
-  nextSceneButton.remove();
+  // nextSceneButton.remove();
   buttonRemover();
   loseRestartButton = createButton("You lose. Try again?");
   loseRestartButton.position(30, 580); //located at bottom center
@@ -1028,11 +1034,11 @@ function winEnd() {
 
 function mainProfilePage() {
   //set button on canvas and direct the button press to a function
-  seeMapButton.position(250, 120); //located at upper right corner
-  seeMapButton.mousePressed(sendMapButton); //call a function when button is pressed
-  seeMapButton.size(105, 50);
+  // seeMapButton.position(250, 120); //located at upper right corner
+  // seeMapButton.mousePressed(sendMapButton); //call a function when button is pressed
+  // seeMapButton.size(105, 50);
 
-  advanceToScene.remove();
+  // advanceToScene.remove();
 
   inputBoxes(); //place the white boxes on canvas to hold the data
 
@@ -1092,11 +1098,11 @@ My Geolocation:
   text(geolocationProfile, 22, 300);
   pop();
 
-  push();
-  nextSceneButton.position(width - 135, height - 90); //located at upper right corner
-  nextSceneButton.mousePressed(goToNextScene); //call the function when mouse is pressed
-  nextSceneButton.size(105, 50);
-  pop();
+  // push();
+  // nextSceneButton.position(width - 135, height - 90); //located at upper right corner
+  // nextSceneButton.mousePressed(goToNextScene); //call the function when mouse is pressed
+  // nextSceneButton.size(105, 50);
+  // pop();
 }
 
 //call this function to change to the next scene's intro and storyline info
