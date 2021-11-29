@@ -1051,21 +1051,20 @@ function mainProfilePage() {
   //what scene the user is in and what specific item or character was found (activated after the drop menu with character or item is switched)
 
   let profile = `
-  Name:
+
     ${labyrinthProfile.name}
 
-  Where would you like to search?
+  WHERE DO YOU WANT TO GO TODAY?
 
 
-  Characters Collected:
+  HOW WOULD YOU LIKE TO HUNT FOR GEMS:
     ${labyrinthProfile.charactersCollected}
-  Items Collected:
+  WHAT KIND OF GEM ARE YOU HUNTING:
     ${labyrinthProfile.itemsCollected}
+  MY GEOLOCATION:
 
 
-
-
-  What are you looking for?
+  MY CURRENT GEM HUNT:
 
 
 
@@ -1079,26 +1078,26 @@ function mainProfilePage() {
 
   //display the text (using the variable above and template literates) along with the design, 8bit Labyrinth Go game banner at the top
   push();
-  image(labyrinthBanner, 0, 0);
-  textFont(`American Typewriter`);
+  // image(labyrinthBanner, 0, 0);
+  textFont(`Tahoma`);
   textSize(16);
   textAlign(LEFT, TOP);
-  fill(0, 139, 140);
+  fill(0);
   text(profile, 10, 100);
 
   pop();
   //display the user's location in the real-world
   let geolocationProfile = `
-My Geolocation:
+
  Lat: ${labyrinthProfile.currentLocationLat}
  Long: ${labyrinthProfile.currentLocationLong}
     `;
 
   push();
-  textFont(`American Typewriter`);
+  textFont(`Tahoma`);
   textSize(16);
   textAlign(LEFT, TOP);
-  fill(0, 139, 140);
+  fill(170, 169, 167);
   text(geolocationProfile, 22, 300);
   pop();
 
@@ -1216,7 +1215,7 @@ function inputBoxes() {
   //name box
   push();
   fill(inputBox.name.r, inputBox.name.g, inputBox.name.b);
-  stroke(253, 132, 0);
+  stroke(220, 219, 217); //CHANGES ON HOVER
   rect(22, 138, 200, 20, 6);
   pop();
 
@@ -1227,7 +1226,7 @@ function inputBoxes() {
     inputBox.collectedCharacters.g,
     inputBox.collectedCharacters.b
   );
-  stroke(253, 132, 0);
+  stroke(220, 219, 217); //CHANGES ON HOVER
   rect(22, 257, 100, 20, 6);
   pop();
 
@@ -1238,7 +1237,7 @@ function inputBoxes() {
     inputBox.collectedItems.g,
     inputBox.collectedItems.b
   );
-  stroke(253, 132, 0);
+  stroke(220, 219, 217); ///CHANGES ON HOVER
   rect(22, 297, 100, 20, 6);
 
   pop();
@@ -1246,7 +1245,7 @@ function inputBoxes() {
   //my geolocation box
   push();
   fill(inputBox.geolocation.r, inputBox.geolocation.g, inputBox.geolocation.b);
-  stroke(253, 132, 0);
+  stroke(220, 219, 217); //CHANGES TO BLACK ON HOVER
   rect(22, 336, 250, 45, 6);
 
   pop();
@@ -1254,7 +1253,7 @@ function inputBoxes() {
   // Story line BOX - what scene are you in and what have you found.
   push();
   fill(inputBox.current.r, inputBox.current.g, inputBox.current.b);
-  stroke(253, 132, 0);
+  stroke(220, 219, 217); //CHANGES TO BLACK ON HOVER OR SELECT
   rect(22, 475, 330, 158, 6);
   pop();
 }
