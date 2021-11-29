@@ -245,7 +245,7 @@ function setup() {
   ////!!!START HERE first make password input box and then position buttons in a better location. then place them into their own functions and use the button and input remover to make them disappear when you go into the application
   //create button, username and password inputs and position
   // push();
-  signInNameInput = createInput("name", "text");
+  signInNameInput = createInput("NAME", "text");
   signInNameInput.size(238, 30);
   passwordInput = createInput("password", "password");
   passwordInput.size(238, 30);
@@ -1051,16 +1051,16 @@ function mainProfilePage() {
   //what scene the user is in and what specific item or character was found (activated after the drop menu with character or item is switched)
 
   let profile = `
+  HI ${labyrinthProfile.name}!
 
-    ${labyrinthProfile.name}
 
   WHERE DO YOU WANT TO GO TODAY?
 
 
   HOW WOULD YOU LIKE TO HUNT FOR GEMS:
-    ${labyrinthProfile.charactersCollected}
+
   WHAT KIND OF GEM ARE YOU HUNTING:
-    ${labyrinthProfile.itemsCollected}
+
   MY GEOLOCATION:
 
 
@@ -1089,13 +1089,14 @@ function mainProfilePage() {
   //display the user's location in the real-world
   let geolocationProfile = `
 
+
  Lat: ${labyrinthProfile.currentLocationLat}
  Long: ${labyrinthProfile.currentLocationLong}
     `;
 
   push();
   textFont(`Tahoma`);
-  textSize(16);
+  textSize(12);
   textAlign(LEFT, TOP);
   fill(170, 169, 167);
   text(geolocationProfile, 22, 300);
@@ -1213,23 +1214,23 @@ function dropMenus() {
 function inputBoxes() {
   // boxes behind data entered information.
   //name box
-  push();
-  fill(inputBox.name.r, inputBox.name.g, inputBox.name.b);
-  stroke(220, 219, 217); //CHANGES ON HOVER
-  rect(22, 138, 200, 20, 6);
-  pop();
+  // push();
+  // fill(inputBox.name.r, inputBox.name.g, inputBox.name.b);
+  // stroke(220, 219, 217); //CHANGES ON HOVER
+  // rect(22, 138, 200, 20, 6);
+  // pop();
 
   //characters tally box
-  push();
-  fill(
-    inputBox.collectedCharacters.r,
-    inputBox.collectedCharacters.g,
-    inputBox.collectedCharacters.b
-  );
-  stroke(220, 219, 217); //CHANGES ON HOVER
-  rect(22, 257, 100, 20, 6);
-  pop();
-
+  // push();
+  // fill(
+  //   inputBox.collectedCharacters.r,
+  //   inputBox.collectedCharacters.g,
+  //   inputBox.collectedCharacters.b
+  // );
+  // stroke(220, 219, 217); //CHANGES ON HOVER
+  // rect(22, 257, 100, 20, 6);
+  // pop();
+  let gemsCounter = ` ${labyrinthProfile.itemsCollected}   GEMS COLLECTED`;
   //items tally box
   push();
   fill(
@@ -1238,7 +1239,11 @@ function inputBoxes() {
     inputBox.collectedItems.b
   );
   stroke(220, 219, 217); ///CHANGES ON HOVER
-  rect(22, 297, 100, 20, 6);
+  fill(255);
+  rect(222, 97, 20, 20, 6);
+
+  fill(0);
+  text(gemsCounter, 225, 112);
 
   pop();
 
