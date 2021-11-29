@@ -799,6 +799,10 @@ function sendMapButton() {
 //take away the buttons and menus from canvas
 ////MAKE THIS FOR THE ENTER SCREEN
 function buttonRemover() {
+  signInNameInput.remove();
+  passwordInput.remove();
+  registerButton.remove();
+  signInButton.remove();
   // userInputLocation.remove();
   // userInputSelection.remove();
   // nextSceneButton.remove();
@@ -1039,7 +1043,7 @@ function mainProfilePage() {
   // seeMapButton.size(105, 50);
 
   // advanceToScene.remove();
-
+  buttonRemover();
   inputBoxes(); //place the white boxes on canvas to hold the data
 
   //profle text with changing data in the template literals
