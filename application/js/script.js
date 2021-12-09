@@ -82,6 +82,18 @@ let registerButton;
 let passwordInput;
 let signInBoxColor = "white";
 
+//main search page
+let saveAndStartButton;
+//neightbourhood buttons
+let plateauOutremontButton;
+let villerayRosemontButton;
+let villeMarieButton;
+let ndgCDNButton;
+let hochelagaMaisonButton;
+let sudOuestButton;
+let verdunPointeSCButton;
+let mysteryHoodButton;
+
 //variables to store the gif with the storyline for the start of each scene
 let signInPage = undefined;
 let enterOneInfo = undefined;
@@ -857,6 +869,64 @@ function introAdvanceButton() {
   advanceToScene.size(105, 50);
 }
 
+/// button to start search
+function startSearchButton() {
+  saveAndStartButton = createButton("SAVE AND START!");
+  saveAndStartButton.position(width / 2 - 75, 600); //located at bottom center
+  // saveAndStartButton.mousePressed(startSearch); //call a function (to be created) that begins the search
+  saveAndStartButton.size(150, 30);
+}
+
+///neightbouthood Buttons for search screen
+function neighbourhoodSearchButtons() {
+  //plateau-outremont
+  plateauOutremontButton = createButton("Plateau / Outremont");
+  plateauOutremontButton.position(30, 170);
+  // plateauOutremontButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
+  plateauOutremontButton.size(150, 30);
+
+  //villeray-rosemont
+  villerayRosemontButton = createButton("Villeray / Rosemont");
+  villerayRosemontButton.position(200, 170);
+  // villerayRosemontButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
+  villerayRosemontButton.size(150, 30);
+
+  //ville-marie
+  villeMarieButton = createButton("Ville Marie");
+  villeMarieButton.position(33, 300);
+  // villeMarieButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
+  villeMarieButton.size(150, 30);
+
+  //ndg-cdn
+  ndgCDNButton = createButton("NDG / CDN");
+  ndgCDNButton.position(33, 300);
+  // ndgCDNButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
+  ndgCDNButton.size(150, 30);
+
+  //hochelaga Maisoneuve
+  hochelagaMaisonButton = createButton("Hochelaga Maisonneuve");
+  hochelagaMaisonButton.position(33, 300);
+  // hochelagaMaisonButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
+  hochelagaMaisonButton.size(150, 30);
+
+  //sudOuest
+  sudOuestButton = createButton("Sud Ouest");
+  sudOuestButton.position(33, 300);
+  // sudOuestButton.mousePressed(startSearchSudOuest); //call a function (to be created) that begins the search
+  sudOuestButton.size(150, 30);
+
+  //verdun PointeSC
+  verdunPointeSCButton = createButton("Sud Ouest");
+  verdunPointeSCButton.position(33, 300);
+  // verdunPointeSCButton.mousePressed(startSearchverdunPointeSC); //call a function (to be created) that begins the search
+  sudOuestButton.size(150, 30);
+
+  //mysteryHood search (random?)
+  mysteryHoodButton = createButton("Sud Ouest");
+  mysteryHoodButton.position(33, 300);
+  // mysteryHoodButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
+  mysteryHoodButton.size(150, 30);
+}
 //change scene from 'enter_scene_#' to 'scene_#'
 function returnAdvanceButton() {
   if (state === `enter_scene_One`) {
@@ -1051,26 +1121,30 @@ function mainProfilePage() {
   //what scene the user is in and what specific item or character was found (activated after the drop menu with character or item is switched)
 
   let profile = `
-  HI ${labyrinthProfile.name}!
+   HI ${labyrinthProfile.name}!
 
-
-  WHERE DO YOU WANT TO GO TODAY?
-
-
-  HOW WOULD YOU LIKE TO HUNT FOR GEMS:
-
-  WHAT KIND OF GEM ARE YOU HUNTING:
-
-  MY GEOLOCATION:
-
-
-  MY CURRENT GEM HUNT:
+   WHERE DO YOU WANT TO GO TODAY?
 
 
 
-    Current Scene: ${labyrinthProfile.currentScene}
-    Item Found:
-    ${labyrinthProfile.hiddenThingFound}
+
+
+
+
+
+   HOW WOULD YOU LIKE TO HUNT FOR GEMS:
+
+
+
+   WHAT KIND OF GEM ARE YOU HUNTING:
+
+
+
+   MY CURRENT GEM HUNT:
+
+
+
+
 
 
 
@@ -1090,8 +1164,7 @@ function mainProfilePage() {
   let geolocationProfile = `
 
 
- Lat: ${labyrinthProfile.currentLocationLat}
- Long: ${labyrinthProfile.currentLocationLong}
+ Lat: ${labyrinthProfile.currentLocationLat}           Long: ${labyrinthProfile.currentLocationLong}
     `;
 
   push();
@@ -1099,7 +1172,7 @@ function mainProfilePage() {
   textSize(12);
   textAlign(LEFT, TOP);
   fill(170, 169, 167);
-  text(geolocationProfile, 22, 300);
+  text(geolocationProfile, 22, 600);
   pop();
 
   // push();
@@ -1247,19 +1320,22 @@ function inputBoxes() {
 
   pop();
 
-  //my geolocation box
+  //what kind of gem are you hunting box
   push();
+  ///put text here instead of above in the large text profile
   fill(inputBox.geolocation.r, inputBox.geolocation.g, inputBox.geolocation.b);
   stroke(220, 219, 217); //CHANGES TO BLACK ON HOVER
-  rect(22, 336, 250, 45, 6);
+  rect(22, 448, 330, 35, 6);
 
   pop();
 
-  // Story line BOX - what scene are you in and what have you found.
+  // my current gem hunt box
   push();
   fill(inputBox.current.r, inputBox.current.g, inputBox.current.b);
   stroke(220, 219, 217); //CHANGES TO BLACK ON HOVER OR SELECT
-  rect(22, 475, 330, 158, 6);
+  rect(22, 530, 330, 58, 6);
+  startSearchButton();
+  neighbourhoodSearchButtons();
   pop();
 }
 
