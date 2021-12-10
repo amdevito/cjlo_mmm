@@ -94,6 +94,12 @@ let sudOuestButton;
 let verdunPointeSCButton;
 let mysteryHoodButton;
 
+//how would you like to hunt Buttons
+let mysteryWalkButton;
+let verbalDirectionsButton;
+let followTheMapButton;
+let surpriseMeButton;
+
 //variables to store the gif with the storyline for the start of each scene
 let signInPage = undefined;
 let enterOneInfo = undefined;
@@ -927,6 +933,32 @@ function neighbourhoodSearchButtons() {
   // mysteryHoodButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
   mysteryHoodButton.size(150, 40);
 }
+
+function howToHuntButtons() {
+  //mystery walk
+  mysteryWalkButton = createButton("mystery walk");
+  mysteryWalkButton.position(23, 420);
+  // plateauOutremontButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
+  mysteryWalkButton.size(75, 40);
+
+  //verbal directions
+  verbalDirectionsButton = createButton("verbal directions");
+  verbalDirectionsButton.position(108, 420);
+  // villerayRosemontButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
+  verbalDirectionsButton.size(75, 40);
+
+  //follow the map button
+  followTheMapButton = createButton("follow the map");
+  followTheMapButton.position(193, 420);
+  // villeMarieButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
+  followTheMapButton.size(75, 40);
+
+  //surprise me button
+  surpriseMeButton = createButton("surprise me!");
+  surpriseMeButton.position(277, 420);
+  // ndgCDNButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
+  surpriseMeButton.size(75, 40);
+}
 //change scene from 'enter_scene_#' to 'scene_#'
 function returnAdvanceButton() {
   if (state === `enter_scene_One`) {
@@ -1368,6 +1400,7 @@ function inputBoxes() {
   rect(22, 545, 330, 40, 6);
   startSearchButton();
   neighbourhoodSearchButtons();
+  howToHuntButtons();
   pop();
 }
 
