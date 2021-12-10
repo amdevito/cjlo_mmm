@@ -303,7 +303,7 @@ function enterIntro() {
   push();
   // image(labyrinthBanner, 0, 0);
   textFont(`Verdana`);
-  textSize(width / 45);
+  textSize(12);
   textAlign(CENTER, CENTER);
   fill(0);
   text(
@@ -881,51 +881,51 @@ function startSearchButton() {
 function neighbourhoodSearchButtons() {
   //plateau-outremont
   plateauOutremontButton = createButton("Plateau / Outremont");
-  plateauOutremontButton.position(30, 170);
+  plateauOutremontButton.position(23, 190);
   // plateauOutremontButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
-  plateauOutremontButton.size(150, 30);
+  plateauOutremontButton.size(150, 40);
 
   //villeray-rosemont
   villerayRosemontButton = createButton("Villeray / Rosemont");
-  villerayRosemontButton.position(200, 170);
+  villerayRosemontButton.position(200, 190);
   // villerayRosemontButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
-  villerayRosemontButton.size(150, 30);
+  villerayRosemontButton.size(150, 40);
 
   //ville-marie
   villeMarieButton = createButton("Ville Marie");
-  villeMarieButton.position(33, 300);
+  villeMarieButton.position(23, 240);
   // villeMarieButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
-  villeMarieButton.size(150, 30);
+  villeMarieButton.size(150, 40);
 
   //ndg-cdn
   ndgCDNButton = createButton("NDG / CDN");
-  ndgCDNButton.position(33, 300);
+  ndgCDNButton.position(200, 240);
   // ndgCDNButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
-  ndgCDNButton.size(150, 30);
+  ndgCDNButton.size(150, 40);
 
   //hochelaga Maisoneuve
   hochelagaMaisonButton = createButton("Hochelaga Maisonneuve");
-  hochelagaMaisonButton.position(33, 300);
+  hochelagaMaisonButton.position(23, 290);
   // hochelagaMaisonButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
-  hochelagaMaisonButton.size(150, 30);
+  hochelagaMaisonButton.size(150, 40);
 
   //sudOuest
   sudOuestButton = createButton("Sud Ouest");
-  sudOuestButton.position(33, 300);
+  sudOuestButton.position(200, 290);
   // sudOuestButton.mousePressed(startSearchSudOuest); //call a function (to be created) that begins the search
-  sudOuestButton.size(150, 30);
+  sudOuestButton.size(150, 40);
 
   //verdun PointeSC
-  verdunPointeSCButton = createButton("Sud Ouest");
-  verdunPointeSCButton.position(33, 300);
+  verdunPointeSCButton = createButton("Verdun / Point SC");
+  verdunPointeSCButton.position(23, 340);
   // verdunPointeSCButton.mousePressed(startSearchverdunPointeSC); //call a function (to be created) that begins the search
-  sudOuestButton.size(150, 30);
+  verdunPointeSCButton.size(150, 40);
 
   //mysteryHood search (random?)
-  mysteryHoodButton = createButton("Sud Ouest");
-  mysteryHoodButton.position(33, 300);
+  mysteryHoodButton = createButton("Mystery Hood");
+  mysteryHoodButton.position(200, 340);
   // mysteryHoodButton.mousePressed(startSearchOutremont); //call a function (to be created) that begins the search
-  mysteryHoodButton.size(150, 30);
+  mysteryHoodButton.size(150, 40);
 }
 //change scene from 'enter_scene_#' to 'scene_#'
 function returnAdvanceButton() {
@@ -1120,46 +1120,78 @@ function mainProfilePage() {
   //user's name, the number of characters and items collected over the span of the game
   //what scene the user is in and what specific item or character was found (activated after the drop menu with character or item is switched)
 
-  let profile = `
-   HI ${labyrinthProfile.name}!
-
-   WHERE DO YOU WANT TO GO TODAY?
-
-
-
-
-
-
-
-
-   HOW WOULD YOU LIKE TO HUNT FOR GEMS:
-
-
-
-   WHAT KIND OF GEM ARE YOU HUNTING:
-
-
-
-   MY CURRENT GEM HUNT:
-
-
-
-
-
-
-
+  let profileName = `
+HI ${labyrinthProfile.name}!
 `;
 
   //display the text (using the variable above and template literates) along with the design, 8bit Labyrinth Go game banner at the top
   push();
   // image(labyrinthBanner, 0, 0);
   textFont(`Tahoma`);
-  textSize(16);
+  textSize(14);
   textAlign(LEFT, TOP);
   fill(0);
-  text(profile, 10, 100);
+  text(profileName, 228, 110);
 
   pop();
+
+  let profileWhere = `
+WHERE DO YOU WANT TO GO TODAY?
+  `;
+  //display the text (using the variable above and template literates) along with the design, 8bit Labyrinth Go game banner at the top
+  push();
+  // image(labyrinthBanner, 0, 0);
+  textFont(`Tahoma`);
+  textSize(12);
+  textAlign(LEFT, TOP);
+  fill(0);
+  text(profileWhere, 22, 155);
+
+  pop();
+
+  let profileHow = `
+HOW WOULD YOU LIKE TO HUNT FOR GEMS:
+`;
+
+  //display the text (using the variable above and template literates) along with the design, 8bit Labyrinth Go game banner at the top
+  push();
+  // image(labyrinthBanner, 0, 0);
+  textFont(`Tahoma`);
+  textSize(12);
+  textAlign(LEFT, TOP);
+  fill(0);
+  text(profileHow, 22, 380);
+
+  pop();
+
+  let profileWhat = `
+WHAT KIND OF GEM ARE YOU HUNTING:
+`;
+  //display the text (using the variable above and template literates) along with the design, 8bit Labyrinth Go game banner at the top
+  push();
+  // image(labyrinthBanner, 0, 0);
+  textFont(`Tahoma`);
+  textSize(12);
+  textAlign(LEFT, TOP);
+  fill(0);
+  text(profileWhat, 22, 465);
+
+  pop();
+
+  let profileCurrentHunt = `
+ MY CURRENT GEM HUNT:
+`;
+  //display the text (using the variable above and template literates) along with the design, 8bit Labyrinth Go game banner at the top
+  push();
+  // image(labyrinthBanner, 0, 0);
+  textFont(`Tahoma`);
+  textSize(12);
+  textAlign(LEFT, TOP);
+  fill(0);
+  text(profileCurrentHunt, 20, 512);
+
+  pop();
+
   //display the user's location in the real-world
   let geolocationProfile = `
 
@@ -1311,12 +1343,12 @@ function inputBoxes() {
     inputBox.collectedItems.g,
     inputBox.collectedItems.b
   );
-  stroke(220, 219, 217); ///CHANGES ON HOVER
-  fill(255);
-  rect(222, 97, 20, 20, 6);
+  // stroke(220, 219, 217); ///CHANGES ON HOVER
+  // fill(255);
+  // rect(222, 147, 20, 20, 6);
 
   fill(0);
-  text(gemsCounter, 225, 112);
+  text(gemsCounter, 225, 160);
 
   pop();
 
@@ -1325,7 +1357,7 @@ function inputBoxes() {
   ///put text here instead of above in the large text profile
   fill(inputBox.geolocation.r, inputBox.geolocation.g, inputBox.geolocation.b);
   stroke(220, 219, 217); //CHANGES TO BLACK ON HOVER
-  rect(22, 448, 330, 35, 6);
+  rect(22, 500, 330, 20, 6);
 
   pop();
 
@@ -1333,7 +1365,7 @@ function inputBoxes() {
   push();
   fill(inputBox.current.r, inputBox.current.g, inputBox.current.b);
   stroke(220, 219, 217); //CHANGES TO BLACK ON HOVER OR SELECT
-  rect(22, 530, 330, 58, 6);
+  rect(22, 545, 330, 40, 6);
   startSearchButton();
   neighbourhoodSearchButtons();
   pop();
