@@ -52,20 +52,20 @@ let lat;
 let long;
 
 //create scene variable that will then have one added at every scene advance
-let scene = ``;
+// let scene = ``;
 
 //create variable to store the user's voice declaration of the secret line for the final scene.
-let currentAnswer = ``;
+// let currentAnswer = ``;
 
 // Store the game profile data and all corresponding ifo for game.
 //labyrinthProfile changed to mmmProfile -- Jan7.22
 let mmmProfile = {
   name: ``,
-  searchLocation: `----------`, //search a specific place in that scene
-  charactersCollected: 0, //start with no characters collected
-  itemsCollected: 0, //start with no items collected
-  currentScene: 0, //no scene until entering scene 1
-  selection: `----------`, ///what is the user searching for - item or character?
+  searchLocation: `----------`, //neighbourhood?
+  // charactersCollected: 0, //start with no characters collected
+  audioGemsCollected: 0, //start with no items collected ---jan 7 change to audioGemsCollected from 'itemscollected'
+  // currentScene: 0, //no scene until entering scene 1
+  selection: `----------`, ///what type of audio gem
   password: ``, // save the user's password entered in prompt.
   hiddenThingFound: ``, // name of thing hidden in that scene, in that location. Fetches thing and story line element from the location_data.json file.
 };
@@ -106,11 +106,11 @@ let surpriseMeButton;
 
 //variables to store the gif with the storyline for the start of each scene
 let signInPage = undefined;
-let enterOneInfo = undefined;
-let enterTwoInfo = undefined;
-let enterThreeInfo = undefined;
-let enterFourInfo = undefined;
-let enterFiveInfo = undefined;
+// let enterOneInfo = undefined;
+// let enterTwoInfo = undefined;
+// let enterThreeInfo = undefined;
+// let enterFourInfo = undefined;
+// let enterFiveInfo = undefined;
 
 //variables to store the image at the top of each scene (accompanied by the info above)
 let sceneOneIntroImage = undefined;
@@ -121,7 +121,7 @@ let sceneFiveIntroImage = undefined;
 
 let loseImage = undefined; //don't need this?
 //same as above but for final scene
-let winInfo = undefined;
+// let winInfo = undefined;
 let winImage = undefined;
 
 //end game win scene variables
@@ -235,13 +235,13 @@ function preload() {
 
   ///typing gifs with each scene's storyline typing out : from http://wigflip.com/minifesto/
 
-  signInPage = loadImage(`assets/images/homePage1.png`); //load the optical illusion labyrinth trick map
-  enterOneInfo = loadImage(`assets/images/enterOneInfo.gif`); //load the storyline gif for scene one - 'oh no! you've come to your baby brother's room...''
-  enterTwoInfo = loadImage(`assets/images/enterTwoInfo.gif`); //load the storyline gif for scene two - 'Jareth, the goblin King tells you...'
-  enterThreeInfo = loadImage(`assets/images/sceneThreeInfo.gif`); //load the storyline gif for scene three - 'you find a set of doors guarded by a set of dog-like creatures... '
-  enterFourInfo = loadImage(`assets/images/enterFourInfo.gif`); //load the storyline gif for scene four - 'after escaping out of the oubliette, you encounter the Wiseman...'
-  enterFiveInfo = loadImage(`assets/images/enterFiveInfo.gif`); //load the storyline gif for scene five - "you make it to the Castle at the center of the Goblin City..."
-  winInfo = loadImage(`assets/images/winInfo.gif`); ////load the storyline gif for when user faces off against Jareth 'say the line!'
+  signInPage = loadImage(`assets/images/homePage1.png`); //load home page image
+  // enterOneInfo = loadImage(`assets/images/enterOneInfo.gif`); //load the storyline gif for scene one - 'oh no! you've come to your baby brother's room...''
+  // enterTwoInfo = loadImage(`assets/images/enterTwoInfo.gif`); //load the storyline gif for scene two - 'Jareth, the goblin King tells you...'
+  // enterThreeInfo = loadImage(`assets/images/sceneThreeInfo.gif`); //load the storyline gif for scene three - 'you find a set of doors guarded by a set of dog-like creatures... '
+  // enterFourInfo = loadImage(`assets/images/enterFourInfo.gif`); //load the storyline gif for scene four - 'after escaping out of the oubliette, you encounter the Wiseman...'
+  // enterFiveInfo = loadImage(`assets/images/enterFiveInfo.gif`); //load the storyline gif for scene five - "you make it to the Castle at the center of the Goblin City..."
+  // winInfo = loadImage(`assets/images/winInfo.gif`); ////load the storyline gif for when user faces off against Jareth 'say the line!'
 
   //images for the storylines - 8bit images from the movie
   sceneOneIntroImage = loadImage(`assets/images/sceneOneIntroImage.jpg`); //Toby's room with empty cirb
@@ -354,9 +354,9 @@ function enterIntro() {
   //     if (password === data.password && name === data.name) {
   //       mmmProfile.name = data.name;
   //       mmmProfile.searchLocation = data.searchLocation;
-  //       mmmProfile.charactersCollected = data.charactersCollected;
+  //
   //       mmmProfile.currentScene = data.currentScene;
-  //       mmmProfile.itemsCollected = data.itemsCollected;
+  //       mmmProfile.audioGemsCollected = data.audioGemsCollected;
   //       mmmProfile.selection = data.selection;
   //     } else if (
   //       (password !== data.password && name !== data.name) ||
@@ -464,12 +464,12 @@ function guessLine(line) {
 
 function sendSelection() {
   //force items and characters collcted to test the final scenes:
-  // mmmProfile.charactersCollected = 7; //take away after testing done
-  // mmmProfile.itemsCollected = 4; //take away after testing done
+  //
+  // mmmProfile.audioGemsCollected = 4; //take away after testing done
 
   // testing console.logs to track exacly what info is being found throughout the code.
-  // console.log(mmmProfile.charactersCollected, `characters`);
-  // console.log(mmmProfile.itemsCollected, `items`);
+  //
+  // console.log(mmmProfile.audioGemsCollected, `items`);
   // console.log(gameData);
   // console.log(mmmProfile.searchLocation);
   // console.log(mmmProfile.selection);
@@ -484,7 +484,7 @@ function sendSelection() {
     mmmProfile.searchLocation === `under bed`
   ) {
     mmmProfile.hiddenThingFound = gameData.location_finds[0][`under bed`][0];
-    mmmProfile.charactersCollected++; //character found, add a character point
+    // mmmProfile.charactersCollected++; //character found, add a character point
   } else if (
     mmmProfile.selection === `item` &&
     mmmProfile.searchLocation === `under bed`
@@ -497,7 +497,7 @@ function sendSelection() {
   ) {
     mmmProfile.hiddenThingFound =
       gameData.location_finds[0][`behind curtain`][0];
-    mmmProfile.charactersCollected++; //character found add point
+    // mmmProfile.charactersCollected++; //character found add point
   } else if (
     mmmProfile.selection === `item` &&
     mmmProfile.searchLocation === `behind curtain`
@@ -515,7 +515,7 @@ function sendSelection() {
     mmmProfile.searchLocation === `in bookshelf`
   ) {
     mmmProfile.hiddenThingFound = gameData.location_finds[0][`in bookshelf`][1];
-    mmmProfile.itemsCollected++; //item found, add point
+    mmmProfile.audioGemsCollected++; //item found, add point
     ///// diff location in that same scene
   } else if (
     mmmProfile.selection === `character` &&
@@ -527,7 +527,7 @@ function sendSelection() {
     mmmProfile.searchLocation === `in closet`
   ) {
     mmmProfile.hiddenThingFound = gameData.location_finds[0][`in closet`][1];
-    mmmProfile.itemsCollected++; //found item add point
+    mmmProfile.audioGemsCollected++; //found item add point
   }
   ///sceneTwo
   else if (
@@ -535,7 +535,7 @@ function sendSelection() {
     mmmProfile.searchLocation === `under rock`
   ) {
     mmmProfile.hiddenThingFound = gameData.location_finds[1][`under rock`][0];
-    mmmProfile.charactersCollected++; //characters found and add point
+    // mmmProfile.charactersCollected++; //characters found and add point
     //
   } else if (
     mmmProfile.selection === `item` &&
@@ -549,7 +549,7 @@ function sendSelection() {
     mmmProfile.searchLocation === `behind tree`
   ) {
     mmmProfile.hiddenThingFound = gameData.location_finds[1][`behind tree`][0];
-    mmmProfile.charactersCollected++; //character found, add point.
+    // mmmProfile.charactersCollected++; //character found, add point.
   } else if (
     mmmProfile.selection === `item` &&
     mmmProfile.searchLocation === `behind tree`
@@ -561,7 +561,7 @@ function sendSelection() {
     mmmProfile.searchLocation === `check wall`
   ) {
     mmmProfile.hiddenThingFound = gameData.location_finds[1][`check wall`][0];
-    mmmProfile.charactersCollected++; //found character in that place, add point.
+    // mmmProfile.charactersCollected++; //found character in that place, add point.
   } else if (
     mmmProfile.selection === `item` &&
     mmmProfile.searchLocation === `check wall`
@@ -578,7 +578,7 @@ function sendSelection() {
     mmmProfile.searchLocation === `check ground`
   ) {
     mmmProfile.hiddenThingFound = gameData.location_finds[1][`check ground`][1];
-    mmmProfile.itemsCollected++; //item found on ground, add point.
+    mmmProfile.audioGemsCollected++; //item found on ground, add point.
   }
   ///sceneThree
   else if (
@@ -587,7 +587,7 @@ function sendSelection() {
   ) {
     mmmProfile.hiddenThingFound =
       gameData.location_finds[2][`check left corridor`][0];
-    mmmProfile.charactersCollected++; //character found on the ground, add point.
+    // mmmProfile.charactersCollected++; //character found on the ground, add point.
     //
   } else if (
     mmmProfile.selection === `item` &&
@@ -630,7 +630,7 @@ function sendSelection() {
   ) {
     mmmProfile.hiddenThingFound =
       gameData.location_finds[2][`check door two`][0];
-    mmmProfile.itemsCollected++; /// character found, add point.
+    mmmProfile.audioGemsCollected++; /// character found, add point.
   } else if (
     mmmProfile.selection === `item` &&
     mmmProfile.searchLocation === `check door two`
@@ -645,7 +645,7 @@ function sendSelection() {
   ) {
     mmmProfile.hiddenThingFound =
       gameData.location_finds[3][`look around tree`][0];
-    mmmProfile.charactersCollected++; //character found, add point.
+    // mmmProfile.charactersCollected++; //character found, add point.
     //
   } else if (
     mmmProfile.selection === `item` &&
@@ -660,7 +660,7 @@ function sendSelection() {
     mmmProfile.searchLocation === `look in bush`
   ) {
     mmmProfile.hiddenThingFound = gameData.location_finds[3][`look in bush`][0];
-    mmmProfile.charactersCollected++; ///character is found and point is added.
+    // mmmProfile.charactersCollected++; ///character is found and point is added.
   } else if (
     mmmProfile.selection === `item` &&
     mmmProfile.searchLocation === `look in bush`
@@ -732,8 +732,8 @@ function sendSelection() {
   else if (
     mmmProfile.selection === `character` &&
     mmmProfile.searchLocation === `go through doorway` &&
-    mmmProfile.charactersCollected >= 7 && //if user has 7 or more characters collected, and 4 or more items collected, then they can face Jareth to win the game.
-    mmmProfile.itemsCollected >= 4
+    // mmmProfile.charactersCollected >= 7 && //if user has 7 or more characters collected, and 4 or more items collected, then they can face Jareth to win the game.
+    mmmProfile.audioGemsCollected >= 4
   ) {
     mmmProfile.hiddenThingFound =
       gameData.location_finds[4][`go through doorway`][0];
@@ -741,8 +741,8 @@ function sendSelection() {
   } else if (
     mmmProfile.selection === `character` &&
     mmmProfile.searchLocation === `go through doorway` &&
-    mmmProfile.charactersCollected < 7 && ///if user doesn't collect enough items and characters, user must restart the game and try again.
-    mmmProfile.itemsCollected < 4
+    // mmmProfile.charactersCollected < 7 && ///if user doesn't collect enough items and characters, user must restart the game and try again.
+    mmmProfile.audioGemsCollected < 4
   ) {
     youLoseButton(); ///game over, try again
     mmmProfile.hiddenThingFound = `You didn't collect enough characters\n     or items. Start over and try again.`;
@@ -757,8 +757,8 @@ function sendSelection() {
   else if (
     mmmProfile.selection === `character` &&
     mmmProfile.searchLocation === `jump off ledge` &&
-    mmmProfile.charactersCollected >= 7 && ///if user has collected 7 or more items and characters, face Jareth in the winScene.
-    mmmProfile.itemsCollected >= 4
+    // mmmProfile.charactersCollected >= 7 && ///if user has collected 7 or more items and characters, face Jareth in the winScene.
+    mmmProfile.audioGemsCollected >= 4
   ) {
     mmmProfile.hiddenThingFound =
       gameData.location_finds[4][`jump off ledge`][0];
@@ -767,8 +767,8 @@ function sendSelection() {
   } else if (
     mmmProfile.selection === `character` &&
     mmmProfile.searchLocation === `jump off ledge` &&
-    mmmProfile.charactersCollected < 7 && //if user has collected less than 5 items and characters, lose
-    mmmProfile.itemsCollected < 4
+    // mmmProfile.charactersCollected < 7 && //if user has collected less than 5 items and characters, lose
+    mmmProfile.audioGemsCollected < 4
   ) {
     youLoseButton();
     mmmProfile.hiddenThingFound = `You didn't collect enough characters\n     or items. Start over and try again.`;
@@ -837,8 +837,8 @@ function returnToStart() {
   buttonRemover(); //take out all search menus and buttons
   introAdvanceButton();
   mmmProfile.hiddenThingFound = ``; //clear item or characters found in last part
-  mmmProfile.itemsCollected = 0; //reset items collected to zero to restart game
-  mmmProfile.charactersCollected = 0; //reset characters collected to zero to restart game
+  mmmProfile.audioGemsCollected = 0; //reset items collected to zero to restart game
+  // mmmProfile.charactersCollected = 0; //reset characters collected to zero to restart game
 }
 
 //create button to pop up when user has found jareth or toby and they have the right number of characters and items
@@ -1057,7 +1057,7 @@ function enterOne() {
 
   push();
   imageMode(CENTER);
-  image(enterOneInfo, width / 2 + 7, height / 4);
+  // image(enterOneInfo, width / 2 + 7, height / 4);
   image(sceneOneIntroImage, width / 2 + 7, height / 4 + 250);
   pop();
 }
@@ -1067,7 +1067,7 @@ function enterTwo() {
   buttonRemover();
   push();
   imageMode(CENTER);
-  image(enterTwoInfo, width / 2 + 7, height / 4 + 15);
+  // image(enterTwoInfo, width / 2 + 7, height / 4 + 15);
   image(sceneTwoIntroImage, width / 2 + 7, height / 4 + 250);
   pop();
 }
@@ -1078,7 +1078,7 @@ function enterThree() {
   buttonRemover();
   push();
   imageMode(CENTER);
-  image(enterThreeInfo, width / 2 + 7, height / 4 + 35);
+  // image(enterThreeInfo, width / 2 + 7, height / 4 + 35);
   image(sceneThreeIntroImage, width / 2 + 7, height / 4 + 225);
   pop();
 }
@@ -1089,7 +1089,7 @@ function enterFour() {
   buttonRemover();
   push();
   imageMode(CENTER);
-  image(enterFourInfo, width / 2 + 7, height / 4 + 15);
+  // image(enterFourInfo, width / 2 + 7, height / 4 + 15);
   image(sceneFourIntroImage, width / 2 + 7, height / 4 + 250);
   pop();
 }
@@ -1100,7 +1100,7 @@ function enterFive() {
   buttonRemover();
   push();
   imageMode(CENTER);
-  image(enterFiveInfo, width / 2 + 7, height / 4 + 15);
+  // image(enterFiveInfo, width / 2 + 7, height / 4 + 15);
   image(sceneFiveIntroImage, width / 2 + 7, height / 4 + 220);
   pop();
 }
@@ -1112,7 +1112,7 @@ function win() {
   buttonRemover();
   push();
   imageMode(CENTER);
-  image(winInfo, width / 2 + 7, height / 4 + 15); //'say the line!''
+  // image(winInfo, width / 2 + 7, height / 4 + 15); //'say the line!''
   image(winImage, width / 2 + 7, height / 4 + 220); ///Jareth in the final scene reaching out
   pop();
 }
@@ -1268,7 +1268,7 @@ function sceneOneMenus() {
   /// user's bedroom - find goblins, snake, goblin king, clock
   //user chooses their search location in that scene
 
-  mmmProfile.currentScene = 1; //set the scene to one
+  // mmmProfile.currentScene = 1; //set the scene to one
   //assign locations specific to this scene
   searchLocation.one = `under bed`; //find goblins
   searchLocation.two = `behind curtain`; //goblin king
@@ -1279,7 +1279,7 @@ function sceneOneMenus() {
 function sceneTwoMenus() {
   //at the entrance of labyrinth - find hoggle [behind tree], faeries[under rock], bracelet [on ground], 'hello' caterpillar[at wall]
   //user chooses their search location in that scene
-  mmmProfile.currentScene++; //add one to the scene #
+  // mmmProfile.currentScene++; //add one to the scene #
   //assign locations specific to this scene
   searchLocation.one = `check wall`; //caterpillar
   searchLocation.two = `check ground`; //bracelet
@@ -1291,7 +1291,7 @@ function sceneThreeMenus() {
   ///2 characters guarding doors that lie. 'certain death!'  - collect small characters from the tiles, and the helping hands -- 2 death options hidden in door one.
   //user chooses their search location in that scene
 
-  mmmProfile.currentScene++; //add one to the scene #
+  // mmmProfile.currentScene++; //add one to the scene #
   //assign locations specific to this scene
   searchLocation.one = `check left corridor`; //you catch small characters pop up from the tiles in the ground!
   searchLocation.two = `check door one`; // Certain death! Game over.
@@ -1303,7 +1303,7 @@ function sceneFourMenus() {
   // dark forest - collect the orange dancing bouncing head characters,ludo and try not to fall into the bog of eternal stench, and avoid the posion peach which sends you back to the start.
   //user chooses their search location in that scene
 
-  mmmProfile.currentScene++; //add one to the scene #
+  // mmmProfile.currentScene++; //add one to the scene #
   //assign locations specific to this scene
   searchLocation.one = `look around tree`; //ludo
   searchLocation.two = `look in bush`; ///dancing characters
@@ -1315,7 +1315,7 @@ function sceneFiveMenus() {
   //final labyrinth, house of stairs.
   //user chooses their search location in that scene
 
-  mmmProfile.currentScene++; //add one to the scene #
+  // mmmProfile.currentScene++; //add one to the scene #
   //assign locations specific to this scene
   searchLocation.one = `climb up stairs`; //fall in love with Jareth game over
   searchLocation.two = `go down stairs`; //run out of time game over
@@ -1364,7 +1364,7 @@ function inputBoxes() {
   // stroke(220, 219, 217); //CHANGES ON HOVER
   // rect(22, 257, 100, 20, 6);
   // pop();
-  let gemsCounter = ` ${mmmProfile.itemsCollected}   GEMS COLLECTED`;
+  let gemsCounter = ` ${mmmProfile.audioGemsCollected}   GEMS COLLECTED`;
   //items tally box
   push();
   fill(
