@@ -314,7 +314,7 @@ function enterIntro() {
   push();
   // image(labyrinthBanner, 0, 0);
   textFont(`Verdana`);
-  textSize(12);
+  textSize(8);
   textAlign(CENTER, CENTER);
   fill(0);
   text(
