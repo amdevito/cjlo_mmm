@@ -58,7 +58,8 @@ let scene = ``;
 let currentAnswer = ``;
 
 // Store the game profile data and all corresponding ifo for game.
-let labyrinthProfile = {
+//labyrinthProfile changed to mmmProfile -- Jan7.22
+let mmmProfile = {
   name: ``,
   searchLocation: `----------`, //search a specific place in that scene
   charactersCollected: 0, //start with no characters collected
@@ -301,7 +302,7 @@ function setup() {
   // console.log(realLocationData.heading);
   // console.log(realLocationData.speed);
 
-  ///Game profile saving and setting to the labyrinthProfile variable.
+  ///Game profile saving and setting to the mmmProfile variable.
   // Check of there is a saved profile and try to load the data
 }
 
@@ -351,12 +352,12 @@ function enterIntro() {
   //   } else {
   //     let password = passwordInput.value();
   //     if (password === data.password && name === data.name) {
-  //       labyrinthProfile.name = data.name;
-  //       labyrinthProfile.searchLocation = data.searchLocation;
-  //       labyrinthProfile.charactersCollected = data.charactersCollected;
-  //       labyrinthProfile.currentScene = data.currentScene;
-  //       labyrinthProfile.itemsCollected = data.itemsCollected;
-  //       labyrinthProfile.selection = data.selection;
+  //       mmmProfile.name = data.name;
+  //       mmmProfile.searchLocation = data.searchLocation;
+  //       mmmProfile.charactersCollected = data.charactersCollected;
+  //       mmmProfile.currentScene = data.currentScene;
+  //       mmmProfile.itemsCollected = data.itemsCollected;
+  //       mmmProfile.selection = data.selection;
   //     } else if (
   //       (password !== data.password && name !== data.name) ||
   //       (name === data.name && password !== data.password) ||
@@ -378,13 +379,13 @@ function checkMMMProfile() {}
 //CALL BELOW IF THE REGISTER BUTTON IS PRESSED
 
 function generateLabyrinthProfile() {
-  labyrinthProfile.name = signInNameInput.value(); //prompt answer saved into the variable labyrinthProfile.name
-  labyrinthProfile.password = passwordInput.value(); //prompt answer saved into the variable labyrinthProfile.password
+  mmmProfile.name = signInNameInput.value(); //prompt answer saved into the variable mmmProfile.name
+  mmmProfile.password = passwordInput.value(); //prompt answer saved into the variable mmmProfile.password
 
   localStorage.setItem(
     //store info in localStorage
     `labyrinth-profile-data`,
-    JSON.stringify(labyrinthProfile)
+    JSON.stringify(mmmProfile)
   );
 
   ///!!!!!****
@@ -442,9 +443,9 @@ function draw() {
   }
 }
 
-//when the user selects where to search in that scene, set it to the variable labyrinthProfile.searchLocation
+//when the user selects where to search in that scene, set it to the variable mmmProfile.searchLocation
 function sendSearchLocation() {
-  labyrinthProfile.searchLocation = userInputLocation.value();
+  mmmProfile.searchLocation = userInputLocation.value();
 }
 
 ///in winScene, when up against Jareth at final scene in game - say line, check if right line:
@@ -463,337 +464,319 @@ function guessLine(line) {
 
 function sendSelection() {
   //force items and characters collcted to test the final scenes:
-  // labyrinthProfile.charactersCollected = 7; //take away after testing done
-  // labyrinthProfile.itemsCollected = 4; //take away after testing done
+  // mmmProfile.charactersCollected = 7; //take away after testing done
+  // mmmProfile.itemsCollected = 4; //take away after testing done
 
   // testing console.logs to track exacly what info is being found throughout the code.
-  // console.log(labyrinthProfile.charactersCollected, `characters`);
-  // console.log(labyrinthProfile.itemsCollected, `items`);
+  // console.log(mmmProfile.charactersCollected, `characters`);
+  // console.log(mmmProfile.itemsCollected, `items`);
   // console.log(gameData);
-  // console.log(labyrinthProfile.searchLocation);
-  // console.log(labyrinthProfile.selection);
+  // console.log(mmmProfile.searchLocation);
+  // console.log(mmmProfile.selection);
 
-  labyrinthProfile.selection = userInputSelection.value().toLowerCase();
+  mmmProfile.selection = userInputSelection.value().toLowerCase();
 
   ///logic / if else statements to fetch specific JSON data from location_data.json file.
   ///from the JSON variables - ex.gameData.location_finds[0][`under bed`][1]: first [0] refers to the scene, ['location in the scene'], [0] - character, [1] - item
   //LEVEL ONE
   if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `under bed`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `under bed`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[0][`under bed`][0];
-    labyrinthProfile.charactersCollected++; //character found, add a character point
+    mmmProfile.hiddenThingFound = gameData.location_finds[0][`under bed`][0];
+    mmmProfile.charactersCollected++; //character found, add a character point
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `under bed`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `under bed`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[0][`under bed`][1]; ///nothing is there, so no point added
+    mmmProfile.hiddenThingFound = gameData.location_finds[0][`under bed`][1]; ///nothing is there, so no point added
     ///// diff location in that same scene
   } else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `behind curtain`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `behind curtain`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[0][`behind curtain`][0];
-    labyrinthProfile.charactersCollected++; //character found add point
+    mmmProfile.charactersCollected++; //character found add point
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `behind curtain`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `behind curtain`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[0][`behind curtain`][1]; //nothing there, no point added
     ///// diff location in that same scene
   } else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `in bookshelf`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `in bookshelf`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[0][`in bookshelf`][0]; //nothing there, no point added
+    mmmProfile.hiddenThingFound = gameData.location_finds[0][`in bookshelf`][0]; //nothing there, no point added
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `in bookshelf`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `in bookshelf`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[0][`in bookshelf`][1];
-    labyrinthProfile.itemsCollected++; //item found, add point
+    mmmProfile.hiddenThingFound = gameData.location_finds[0][`in bookshelf`][1];
+    mmmProfile.itemsCollected++; //item found, add point
     ///// diff location in that same scene
   } else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `in closet`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `in closet`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[0][`in closet`][0]; //nothing, no point
+    mmmProfile.hiddenThingFound = gameData.location_finds[0][`in closet`][0]; //nothing, no point
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `in closet`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `in closet`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[0][`in closet`][1];
-    labyrinthProfile.itemsCollected++; //found item add point
+    mmmProfile.hiddenThingFound = gameData.location_finds[0][`in closet`][1];
+    mmmProfile.itemsCollected++; //found item add point
   }
   ///sceneTwo
   else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `under rock`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `under rock`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[1][`under rock`][0];
-    labyrinthProfile.charactersCollected++; //characters found and add point
+    mmmProfile.hiddenThingFound = gameData.location_finds[1][`under rock`][0];
+    mmmProfile.charactersCollected++; //characters found and add point
     //
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `under rock`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `under rock`
   ) {
     //
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[1][`under rock`][1]; //nothing there, no point
+    mmmProfile.hiddenThingFound = gameData.location_finds[1][`under rock`][1]; //nothing there, no point
     /// different search location in the scene
   } else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `behind tree`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `behind tree`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[1][`behind tree`][0];
-    labyrinthProfile.charactersCollected++; //character found, add point.
+    mmmProfile.hiddenThingFound = gameData.location_finds[1][`behind tree`][0];
+    mmmProfile.charactersCollected++; //character found, add point.
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `behind tree`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `behind tree`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[1][`behind tree`][1]; //no item there, no point.
+    mmmProfile.hiddenThingFound = gameData.location_finds[1][`behind tree`][1]; //no item there, no point.
     //different search location in the scene.
   } else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `check wall`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `check wall`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[1][`check wall`][0];
-    labyrinthProfile.charactersCollected++; //found character in that place, add point.
+    mmmProfile.hiddenThingFound = gameData.location_finds[1][`check wall`][0];
+    mmmProfile.charactersCollected++; //found character in that place, add point.
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `check wall`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `check wall`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[1][`check wall`][1]; // no item there, no point
+    mmmProfile.hiddenThingFound = gameData.location_finds[1][`check wall`][1]; // no item there, no point
     ///different search location in that scene
   } else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `check ground`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `check ground`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[1][`check ground`][0]; //no character there, no point
+    mmmProfile.hiddenThingFound = gameData.location_finds[1][`check ground`][0]; //no character there, no point
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `check ground`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `check ground`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[1][`check ground`][1];
-    labyrinthProfile.itemsCollected++; //item found on ground, add point.
+    mmmProfile.hiddenThingFound = gameData.location_finds[1][`check ground`][1];
+    mmmProfile.itemsCollected++; //item found on ground, add point.
   }
   ///sceneThree
   else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `check left corridor`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `check left corridor`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[2][`check left corridor`][0];
-    labyrinthProfile.charactersCollected++; //character found on the ground, add point.
+    mmmProfile.charactersCollected++; //character found on the ground, add point.
     //
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `check left corridor`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `check left corridor`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[2][`check left corridor`][1]; //item is not found there, no point.
   } ///new location in that scene
   else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `check door one`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `check door one`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[2][`check door one`][0];
     youLoseButton(); // door one is certain death! - call the you lose button -first GAME OVER trap - RESTART and try again!
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `check door one`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `check door one`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[2][`check door one`][1];
     youLoseButton(); // door one is certain death! - call the you lose button -first GAME OVER trap - RESTART and try again!
   } ///new location in that scene
   else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `check right corridor`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `check right corridor`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[2][`check right corridor`][0]; /// nothing is there, no point
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `check right corridor`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `check right corridor`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[2][`check right corridor`][1]; //no item is there, no point.
   } ///new location in that scene
   else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `check door two`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `check door two`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[2][`check door two`][0];
-    labyrinthProfile.itemsCollected++; /// character found, add point.
+    mmmProfile.itemsCollected++; /// character found, add point.
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `check door two`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `check door two`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[2][`check door two`][1]; ///no item there, no point found.
   }
   ///sceneFour
   else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `look around tree`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `look around tree`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[3][`look around tree`][0];
-    labyrinthProfile.charactersCollected++; //character found, add point.
+    mmmProfile.charactersCollected++; //character found, add point.
     //
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `look around tree`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `look around tree`
   ) {
     //
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[3][`look around tree`][1];
   } /// new location in scene
   else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `look in bush`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `look in bush`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[3][`look in bush`][0];
-    labyrinthProfile.charactersCollected++; ///character is found and point is added.
+    mmmProfile.hiddenThingFound = gameData.location_finds[3][`look in bush`][0];
+    mmmProfile.charactersCollected++; ///character is found and point is added.
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `look in bush`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `look in bush`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[3][`look in bush`][1]; ///no item is found there, no point added.
+    mmmProfile.hiddenThingFound = gameData.location_finds[3][`look in bush`][1]; ///no item is found there, no point added.
   } ///new location in scene
   else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `look in dark tunnel`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `look in dark tunnel`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[3][`look in dark tunnel`][0]; //no character is found, no point
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `look in dark tunnel`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `look in dark tunnel`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[3][`look in dark tunnel`][1];
     //fall into the bog of eternal stench! Game over button - restart game
     youLoseButton();
   }
   //new location in scene
   else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `climb tree`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `climb tree`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[3][`climb tree`][0]; //character not found, no points
+    mmmProfile.hiddenThingFound = gameData.location_finds[3][`climb tree`][0]; //character not found, no points
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `climb tree`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `climb tree`
   ) {
-    labyrinthProfile.hiddenThingFound =
-      gameData.location_finds[3][`climb tree`][1];
+    mmmProfile.hiddenThingFound = gameData.location_finds[3][`climb tree`][1];
     youLoseButton();
     //poison peach sends you back to the start of the game.
   }
   ///sceneFive
   else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `climb up stairs`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `climb up stairs`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[4][`climb up stairs`][0];
     youLoseButton();
     /// fall in love with Jareth (let's not kid ourselves here, it is DAVID BOWIE after allllllll <3) - game over and restart.
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `climb up stairs`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `climb up stairs`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[4][`climb up stairs`][1]; //nothing found there, keep searching.
   }
   ///new search location in scene
   else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `go down stairs`
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `go down stairs`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[4][`go down stairs`][0]; //no charater there, keep searching.
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `go down stairs`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `go down stairs`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[4][`go down stairs`][1];
     youLoseButton();
     //run out of time, game over.
   }
   ///search new location in scene
   else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `go through doorway` &&
-    labyrinthProfile.charactersCollected >= 7 && //if user has 7 or more characters collected, and 4 or more items collected, then they can face Jareth to win the game.
-    labyrinthProfile.itemsCollected >= 4
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `go through doorway` &&
+    mmmProfile.charactersCollected >= 7 && //if user has 7 or more characters collected, and 4 or more items collected, then they can face Jareth to win the game.
+    mmmProfile.itemsCollected >= 4
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[4][`go through doorway`][0];
     faceJarethButton(); ///go to the winScene where user has to say the line, 'you have no power over me' to win the game, or they must restart if they can't remember that line.
   } else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `go through doorway` &&
-    labyrinthProfile.charactersCollected < 7 && ///if user doesn't collect enough items and characters, user must restart the game and try again.
-    labyrinthProfile.itemsCollected < 4
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `go through doorway` &&
+    mmmProfile.charactersCollected < 7 && ///if user doesn't collect enough items and characters, user must restart the game and try again.
+    mmmProfile.itemsCollected < 4
   ) {
     youLoseButton(); ///game over, try again
-    labyrinthProfile.hiddenThingFound = `You didn't collect enough characters\n     or items. Start over and try again.`;
+    mmmProfile.hiddenThingFound = `You didn't collect enough characters\n     or items. Start over and try again.`;
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `go through doorway`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `go through doorway`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[4][`go through doorway`][1]; //nothing there, keep searching
   }
   //search different location in scene.
   else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `jump off ledge` &&
-    labyrinthProfile.charactersCollected >= 7 && ///if user has collected 7 or more items and characters, face Jareth in the winScene.
-    labyrinthProfile.itemsCollected >= 4
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `jump off ledge` &&
+    mmmProfile.charactersCollected >= 7 && ///if user has collected 7 or more items and characters, face Jareth in the winScene.
+    mmmProfile.itemsCollected >= 4
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[4][`jump off ledge`][0];
     faceJarethButton();
     //chance to win by facing Jareth
   } else if (
-    labyrinthProfile.selection === `character` &&
-    labyrinthProfile.searchLocation === `jump off ledge` &&
-    labyrinthProfile.charactersCollected < 7 && //if user has collected less than 5 items and characters, lose
-    labyrinthProfile.itemsCollected < 4
+    mmmProfile.selection === `character` &&
+    mmmProfile.searchLocation === `jump off ledge` &&
+    mmmProfile.charactersCollected < 7 && //if user has collected less than 5 items and characters, lose
+    mmmProfile.itemsCollected < 4
   ) {
     youLoseButton();
-    labyrinthProfile.hiddenThingFound = `You didn't collect enough characters\n     or items. Start over and try again.`;
+    mmmProfile.hiddenThingFound = `You didn't collect enough characters\n     or items. Start over and try again.`;
   } else if (
-    labyrinthProfile.selection === `item` &&
-    labyrinthProfile.searchLocation === `jump off ledge`
+    mmmProfile.selection === `item` &&
+    mmmProfile.searchLocation === `jump off ledge`
   ) {
-    labyrinthProfile.hiddenThingFound =
+    mmmProfile.hiddenThingFound =
       gameData.location_finds[4][`jump off ledge`][1];
     youLoseButton();
 
@@ -853,9 +836,9 @@ function returnToStart() {
   loseRestartButton.remove();
   buttonRemover(); //take out all search menus and buttons
   introAdvanceButton();
-  labyrinthProfile.hiddenThingFound = ``; //clear item or characters found in last part
-  labyrinthProfile.itemsCollected = 0; //reset items collected to zero to restart game
-  labyrinthProfile.charactersCollected = 0; //reset characters collected to zero to restart game
+  mmmProfile.hiddenThingFound = ``; //clear item or characters found in last part
+  mmmProfile.itemsCollected = 0; //reset items collected to zero to restart game
+  mmmProfile.charactersCollected = 0; //reset characters collected to zero to restart game
 }
 
 //create button to pop up when user has found jareth or toby and they have the right number of characters and items
@@ -1167,7 +1150,7 @@ function mainProfilePage() {
   //what scene the user is in and what specific item or character was found (activated after the drop menu with character or item is switched)
 
   let profileName = `
-HI ${labyrinthProfile.name}!
+HI ${mmmProfile.name}!
 `;
 
   //display the text (using the variable above and template literates) along with the design, 8bit Labyrinth Go game banner at the top
@@ -1242,7 +1225,7 @@ WHAT KIND OF GEM ARE YOU HUNTING:
   let geolocationProfile = `
 
 
- Lat: ${labyrinthProfile.currentLocationLat}           Long: ${labyrinthProfile.currentLocationLong}
+ Lat: ${mmmProfile.currentLocationLat}           Long: ${mmmProfile.currentLocationLong}
     `;
 
   push();
@@ -1265,19 +1248,19 @@ function goToNextScene() {
   if (state === `scene_One`) {
     state = `enter_scene_Two`;
     introAdvanceButton();
-    labyrinthProfile.hiddenThingFound = ``; //clear item or character found in the previous section
+    mmmProfile.hiddenThingFound = ``; //clear item or character found in the previous section
   } else if (state === `scene_Two`) {
     state = `enter_scene_Three`;
     introAdvanceButton();
-    labyrinthProfile.hiddenThingFound = ``; //clear item or character found in the previous section
+    mmmProfile.hiddenThingFound = ``; //clear item or character found in the previous section
   } else if (state === `scene_Three`) {
     state = `enter_scene_Four`;
     introAdvanceButton();
-    labyrinthProfile.hiddenThingFound = ``; //clear item or character found in the previous section
+    mmmProfile.hiddenThingFound = ``; //clear item or character found in the previous section
   } else if (state === `scene_Four`) {
     state = `enter_scene_Five`;
     introAdvanceButton();
-    labyrinthProfile.hiddenThingFound = ``; //clear item or character found in the previous section
+    mmmProfile.hiddenThingFound = ``; //clear item or character found in the previous section
   }
 }
 
@@ -1285,7 +1268,7 @@ function sceneOneMenus() {
   /// user's bedroom - find goblins, snake, goblin king, clock
   //user chooses their search location in that scene
 
-  labyrinthProfile.currentScene = 1; //set the scene to one
+  mmmProfile.currentScene = 1; //set the scene to one
   //assign locations specific to this scene
   searchLocation.one = `under bed`; //find goblins
   searchLocation.two = `behind curtain`; //goblin king
@@ -1296,7 +1279,7 @@ function sceneOneMenus() {
 function sceneTwoMenus() {
   //at the entrance of labyrinth - find hoggle [behind tree], faeries[under rock], bracelet [on ground], 'hello' caterpillar[at wall]
   //user chooses their search location in that scene
-  labyrinthProfile.currentScene++; //add one to the scene #
+  mmmProfile.currentScene++; //add one to the scene #
   //assign locations specific to this scene
   searchLocation.one = `check wall`; //caterpillar
   searchLocation.two = `check ground`; //bracelet
@@ -1308,7 +1291,7 @@ function sceneThreeMenus() {
   ///2 characters guarding doors that lie. 'certain death!'  - collect small characters from the tiles, and the helping hands -- 2 death options hidden in door one.
   //user chooses their search location in that scene
 
-  labyrinthProfile.currentScene++; //add one to the scene #
+  mmmProfile.currentScene++; //add one to the scene #
   //assign locations specific to this scene
   searchLocation.one = `check left corridor`; //you catch small characters pop up from the tiles in the ground!
   searchLocation.two = `check door one`; // Certain death! Game over.
@@ -1320,7 +1303,7 @@ function sceneFourMenus() {
   // dark forest - collect the orange dancing bouncing head characters,ludo and try not to fall into the bog of eternal stench, and avoid the posion peach which sends you back to the start.
   //user chooses their search location in that scene
 
-  labyrinthProfile.currentScene++; //add one to the scene #
+  mmmProfile.currentScene++; //add one to the scene #
   //assign locations specific to this scene
   searchLocation.one = `look around tree`; //ludo
   searchLocation.two = `look in bush`; ///dancing characters
@@ -1332,7 +1315,7 @@ function sceneFiveMenus() {
   //final labyrinth, house of stairs.
   //user chooses their search location in that scene
 
-  labyrinthProfile.currentScene++; //add one to the scene #
+  mmmProfile.currentScene++; //add one to the scene #
   //assign locations specific to this scene
   searchLocation.one = `climb up stairs`; //fall in love with Jareth game over
   searchLocation.two = `go down stairs`; //run out of time game over
@@ -1381,7 +1364,7 @@ function inputBoxes() {
   // stroke(220, 219, 217); //CHANGES ON HOVER
   // rect(22, 257, 100, 20, 6);
   // pop();
-  let gemsCounter = ` ${labyrinthProfile.itemsCollected}   GEMS COLLECTED`;
+  let gemsCounter = ` ${mmmProfile.itemsCollected}   GEMS COLLECTED`;
   //items tally box
   push();
   fill(
@@ -1420,8 +1403,8 @@ function inputBoxes() {
 
 //set the geolocation data from the library to the correct UI element in the profile.
 function positionChanged(position) {
-  labyrinthProfile.currentLocationLat = position.latitude;
-  labyrinthProfile.currentLocationLong = position.longitude;
+  mmmProfile.currentLocationLat = position.latitude;
+  mmmProfile.currentLocationLong = position.longitude;
 }
 
 // ///mouse Press advances user from the open welcome and intro scene.
