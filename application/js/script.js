@@ -891,8 +891,8 @@ function startSearchButton() {
 function mainSearchHeader() {
   push();
   imageMode(CENTER);
-  image(searchPageHead, width / 2, 100);
-  image(gem, width - 40, 200);
+  image(searchPageHead, width / 2, 85);
+  image(gem, width / 2 + 20, 150);
   push();
 }
 
@@ -1174,10 +1174,10 @@ HI ${labyrinthProfile.name}!
   push();
   // image(labyrinthBanner, 0, 0);
   textFont(`Tahoma`);
-  textSize(14);
+  textSize(12);
   textAlign(LEFT, TOP);
   fill(0);
-  text(profileName, 228, 110);
+  text(profileName, 223, 115);
 
   pop();
 
@@ -1394,7 +1394,7 @@ function inputBoxes() {
   // rect(222, 147, 20, 20, 6);
 
   fill(0);
-  text(gemsCounter, 225, 160);
+  text(gemsCounter, 220, 155);
 
   pop();
 
